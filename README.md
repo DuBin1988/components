@@ -4,7 +4,7 @@
 
 ## 内容
 
-* [partial](http://partial.md) - 对vue slot的不足进行弥补，slot不支持子组件scope，partial支持子组件scope。
+* [partial](docs/partial.md) - 对vue slot的不足进行弥补，slot不支持子组件scope，partial支持子组件scope。
 * selector - 提供选择特性，list、tree等组件需要。
 * list - 以列表方式显示数据。
 * tree - 以树方式显示数据。
