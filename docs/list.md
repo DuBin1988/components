@@ -18,4 +18,4 @@ partail中data代表每一行数据。
 
 ## 选择
 
-list支持选择功能，具体参考[selector](selector)描述。
+list支持选择功能，具体参考[selector](selector.md)描述。

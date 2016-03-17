@@ -40,4 +40,4 @@ model例子如下：
 
 ## 选择
 
-tree支持选择功能，具体参考selector描述。
+tree支持选择功能，具体参考[selector](selector.md)描述。
