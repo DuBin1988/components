@@ -10,7 +10,7 @@ Object.keys(baseConfig.entry).forEach(function (name) {
 })
 
 // 把examples下所有index.html转换成测试例子.html
-fs.readdirSync('./examples').forEach( (file) => {
+fs.readdirSync('./examples').forEach((file) => {
   baseConfig.plugins.push(
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
@@ -22,7 +22,7 @@ fs.readdirSync('./examples').forEach( (file) => {
 })
 
 // 把examples下子目录里的main.js打包成对应组件名的App.js
-fs.readdirSync('./examples').forEach( (file) => {
+fs.readdirSync('./examples').forEach((file) => {
   baseConfig.entry[file + 'App'] = `./examples/${file}/main.js`
 })
 
@@ -38,6 +38,6 @@ module.exports = merge(baseConfig, {
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoErrorsPlugin()
   ]
 })

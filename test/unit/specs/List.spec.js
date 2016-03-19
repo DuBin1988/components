@@ -6,7 +6,7 @@ import all from 'src/all'
 
 all()
 
-describe('Hello.vue', () => {
+describe('List.vue', () => {
   it('should render correct contents', () => {
     const vm = new Vue({
       data: { model: [{name: 'a'}] },

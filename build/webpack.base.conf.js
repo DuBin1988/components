@@ -1,23 +1,9 @@
 var path = require('path')
-var fs = require('fs')
 var cssLoaders = require('./css-loaders')
 var projectRoot = path.resolve(__dirname, '../')
 
-// 把所有组件单独打包成组件名Vue.js
-function components() {
-  var result = {}
-
-  fs.readdirSync('./src/components').forEach(
-    (file) => {
-      result[file.replace('.v', 'V')] = `./src/components/${file}`
-    }
-  )
-
-  return result
-}
-
 module.exports = {
-  entry: components(),
+  entry: {},
   output: {
     path: path.resolve(__dirname, '../dist/static'),
     publicPath: '/static/',
