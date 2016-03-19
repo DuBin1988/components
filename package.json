@@ -1,6 +1,6 @@
 {
   "name": "components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "基础组件",
   "author": "hns",
   "private": true,
@@ -12,7 +12,7 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint src/** test/e2e/**.js test/unit/specs/** build/**.js",
     "release": "bash build/release.sh"
-},
+  },
   "dependencies": {
     "vue": "^1.0.17"
   },
