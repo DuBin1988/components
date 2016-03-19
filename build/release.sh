@@ -12,11 +12,11 @@ then
   npm run lint 2>/dev/null
   npm run unit 2>/dev/null
 
-  # build
-  VERSION=$VERSION npm run build
-
   # e2e
   npm run e2e 2>/dev/null
+
+  # build
+  VERSION=$VERSION npm run build
 
   # commit
   git add -A
