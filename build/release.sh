@@ -15,11 +15,13 @@ then
   # e2e
   npm run e2e 2>/dev/null
 
-  # build
-  VERSION=$VERSION npm run build
-
   # commit
   git add -A
   git commit -m "[build] $VERSION"
   npm version $VERSION --message "[release] $VERSION"
+
+  # publish
+  git push origin refs/tags/v$VERSION
+  git push
+  npm publish
 fi

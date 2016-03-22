@@ -1,17 +1,20 @@
 {
-  "name": "components",
-  "version": "0.1.1",
+  "name": "vue-client",
+  "version": "0.0.4",
   "description": "基础组件",
   "author": "hns",
-  "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "node build/dev-server.js",
-    "build": "rimraf dist && mkdirp dist && cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.prod.conf.js",
+    "lint": "eslint src/** test/e2e/**.js test/unit/specs/** build/**.js",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e",
-    "lint": "eslint src/** test/e2e/**.js test/unit/specs/** build/**.js",
     "release": "bash build/release.sh"
+  },
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DuBin1988/vue-client"
   },
   "dependencies": {
     "vue": "^1.0.17"
