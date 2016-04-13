@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import VueAsyncData from 'vue-async-data'
-
+import VueResource from 'vue-resource'
 import partial from '../src/mixins/partial'
 
 export default function () {
-  Vue.use(VueAsyncData)
+  Vue.config.debug = true
+  Vue.use(VueResource)
   Vue.mixin(partial)
 }

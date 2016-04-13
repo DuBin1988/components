@@ -4,10 +4,10 @@
 module.exports = {
   'partial tests': function (browser) {
     browser
-    .url('http://localhost:8080/partial.html')
+    .url('http://localhost:8088/partial.html')
       .waitForElementVisible('#app', 5000)
       .assert.containsText('#app', '默认值')
-    .url('http://localhost:8080/list.html')
+    .url('http://localhost:8088/list.html')
       .waitForElementVisible('#app', 5000)
     .end()
   }
