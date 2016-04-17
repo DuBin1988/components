@@ -1,13 +1,16 @@
 <template>
   <div v-for="data in model">
-    <partial name="default">
-      <span>默认值</span>
-    </partial>
+    <child>
+      <partial name="b" partial='a'>
+      </partial>
+    </child>
   </div>
 </template>
 
 <script>
+import Child from './Child'
 export default {
-  props: [ 'model' ]
+  props: [ 'model' ],
+  components: { Child }
 }
 </script>
