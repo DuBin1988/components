@@ -45,7 +45,7 @@ export default {
 
       if (!condition) {
         condition = ' 1=1 '
-        this.model.names.map((pair) => {
+        this.model.names.forEach((pair) => {
           let value = this.model[pair.name]
           if (value && value.length > 0) {
             condition += ' and ' + pair.value.replace('{}', this.model[pair.name] + '')
@@ -53,7 +53,30 @@ export default {
         })
       }
 
-      this.model.http.condition = {condition: ' ' + condition + ' '}
+      let condtions = {}
+      if (condition) {
+        condtions.condition = ' ' + condition + ' '
+      }
+
+      this.model.exps = this.model.exps || []
+      this.model.exps.forEach((exp) => {
+        exp.observables.forEach((token) => {
+          try {
+            /*eslint-disable */
+            let evaluated = eval(token.exp)
+            /*eslint-enable */
+            if (evaluated) {
+              exp.condition = exp.condition.replace(token.literal, evaluated)
+            }
+          } catch (e) {
+            console.log('Evaluation error: ' + exp.exp)
+          }
+        }, this)
+
+        condtions[exp.name] = exp.condition
+      }, this)
+
+      this.model.http.condition = condtions
       this.model.store.dispatch('CRITERIA_CHANGED')
     }
   }
