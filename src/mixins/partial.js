@@ -10,7 +10,14 @@ export default {
       if (!name) {
         name = 'default'
       }
-      partials[name] = el
+
+      // 如果内容本身是partial，获取父传递过来的内容
+      if (el.tagName.toLowerCase() === 'partial') {
+        let pName = el.getAttribute('name')
+        partials[name] = this.$parent.$options.partials[pName]
+      } else {
+        partials[name] = el
+      }
     })
 
     // 获取自己的partial内容，当做默认值。partial处理顺序为：
