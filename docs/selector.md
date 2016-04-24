@@ -53,7 +53,7 @@
 
 ## selectMode
 
-selectMode包括none及single。如果将多个支持选择功能的组件进行复合，例如列表中每一项是树的情形，那个组件支持选择，必须进行指定。
+selectMode包括none及single。如果将多个支持选择功能的组件进行复合，例如列表中每一项是树的情形，哪个组件支持选择，必须进行指定。
 
     <template>
       <list select-mode='none'>
@@ -72,7 +72,7 @@ selectMode包括none及single。如果将多个支持选择功能的组件进行
 
 * selectStore - 选中项存放的store
 * selectMode - 选择模式，字符串类型。包括: none、single(默认)
-* selected () - 获取当前选中项
+* selected - 当前选中项
 * select (data) - 选择data
 * isSelected (data) - 判断data是否选中
 * beforeCompile () - 处理selectStore的继承问题

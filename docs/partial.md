@@ -1,6 +1,6 @@
 # partial
 
-弥补vue slot不足。slot中的片段，对应父组件，partial对应子组件。slot应用于对话框等场景，partial应用于list、tree等场景。partail中父组件传递的片段内容，对应的是每条数据。
+由父组件传递给子组件的片段，子组件编译前把父组件传递过来的片段插入到模板中指定位置。
 
 ## 用法
 
@@ -45,6 +45,13 @@ partial支持默认值，父组件不提供内容情况下，用默认值。例�
     <partial name='default'>默认值</partial>
 
 父组件没有提供partial时，将显示__默认值__。
+
+## a-partial属性
+
+table等模板元素下面不允许有partial元素，这时，可以通过a-partial属性指明元素的内容由父组件提供。例如：
+
+    <tr a-partial='name'>
+    </tr>
 
 ## partial实现
 

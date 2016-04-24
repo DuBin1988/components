@@ -9,12 +9,12 @@
     <template>
       <div>
         <tree :model='data'>
-          <div partial>{{data.name}}</div>
+          <div partial>{{model.name}}</div>
         </tree>
       </div>
     </template>
 
-partail中data代表树的每一个节点。
+partail中model代表树的每一个节点。
 
 ## model
 
