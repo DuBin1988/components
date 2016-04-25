@@ -33,3 +33,7 @@
 - names 存放配置的查询条件
 
 查询条件放置在查询组件的condition属性里，外部可以通过给查询组件指定名称后，以`this.$refs.search.condition`方式获得查询条件
+
+## 事件
+
+- condition-changed: 查询条件已生成，事件参数为产生的查询条件。

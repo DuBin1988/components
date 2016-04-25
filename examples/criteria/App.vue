@@ -42,7 +42,6 @@ export default {
   },
   methods: {
     showCondition () {
-      console.log(this.$refs)
       this.condition = this.$refs.search.condition
     }
   },

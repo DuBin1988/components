@@ -54,7 +54,6 @@ export default {
         condition = ' 1=1 '
         this.model.names.forEach((pair) => {
           let value = this.model[pair.name]
-          console.log(`name=${pair.name}, value=${value}`)
           if (value && (value + '').length > 0) {
             condition += ' and ' + pair.value.replace('{}', this.model[pair.name] + '')
           }
