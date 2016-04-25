@@ -15,6 +15,24 @@
 - url: 查询时对应的后台sql文件
 - pageSize: 每页行数，不指定的话默认为20
 
+### 指定查询条件数据
+```
+// 分页组件的查询条件
+let namedConditions1 = [
+  {name: 'userName', condition: 'userName like \'%{{this.model.userName}}%\' and address like \'{{this.model.address}}\''},
+  {name: 'address', condition: 'userName like \'%{{this.model.userName}}%\' and address like \'{{this.model.address}}\''}
+]
+```
+指定组件数据
+```
+data () {
+  return {
+    model1: {exps: namedConditions1},
+    model2: {exps: namedConditions2}
+  }
+},
+```
+
 ### 指定查询条件片区 customCriteria
 - partial="customCriteria" 不需要更改
 - 示例       <div>

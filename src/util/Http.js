@@ -10,10 +10,10 @@ export default class Http {
   }
 
   post (pageNo, pageSize, requestbody, succeed, fail) {
-    Vue.http.post(this.url + '?pageNo=' + pageNo + '&pageSize=' + pageSize, requestbody).then(succeed, fail)
+    Vue.http.post(this.url + '?pageNo=' + pageNo + '&pageSize=' + pageSize, JSON.stringify(requestbody)).then(succeed, fail)
   }
 
   npost (requestbody, succeed, fail) {
-    Vue.http.post(this.url + '/n', requestbody).then(succeed, fail)
+    Vue.http.post(this.url + '/n', JSON.stringify(requestbody)).then(succeed, fail)
   }
 }

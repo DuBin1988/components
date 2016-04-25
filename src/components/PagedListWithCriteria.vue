@@ -27,6 +27,7 @@ import List from '../../src/components/List'
 import PagedListWithCriteriaModel from '../../src/models/PagedListWithCriteriaModel'
 
 export default {
+  props: ['model'],
   beforeCompile () {
     let pageSize = this.$options.el.attributes.pageSize
     if (pageSize) {
@@ -35,8 +36,19 @@ export default {
       pageSize = 20
     }
 
+    // keep exps for future use
+    this.$data.model.exps = this.$data.model.exps || []
+    let re = /\{\{(.*?)\}\}/g
+    this.$data.model.exps.forEach((exp) => {
+      let array
+      exp.observables = []
+      while ((array = re.exec(exp.condition)) != null) {
+        exp.observables.push({literal: array[0], exp: array[1]})
+      }
+    })
+
     this.$data = Object.assign({}, this.$data, new PagedListWithCriteriaModel(this.$options.el.attributes.url.nodeValue,
-      pageSize))
+      pageSize, this.$data.model))
   },
   components: { Criteria, List, Pager }
 }

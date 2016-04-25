@@ -2,7 +2,7 @@
   <table>
     <tr valign="top">
       <td>
-        <paged-list-with-criteria url="/rs/sql/test.sql">
+        <paged-list-with-criteria :model="model1" url="/rs/sql/test.sql">
           <span partial="customCriteria">
             <div>
             用户名2: <input type="text" v-model="model.userName" v-on:keyup.enter="search('param')" condition=" userName like '%{}%'" defaultvalue="'13'">
@@ -24,7 +24,7 @@
         </paged-list-with-criteria>
       </td>
       <td>
-        <paged-list-with-criteria  url="/rs/sql/test.sql" pageSize="30">
+        <paged-list-with-criteria  :model="model2"  url="/rs/sql/test.sql" pageSize="30">
           <span partial="customCriteria">
             <div>
             用户名: <input type="text" v-model="model.userName" v-on:keyup.enter="search('param')" condition="like '%{}%'" defaultvalue="'13'">
@@ -52,7 +52,25 @@
 <script>
 import PagedListWithCriteria from '../../src/components/PagedListWithCriteria'
 
+// 第一个分页组件的查询条件
+let namedConditions1 = [
+  {name: 'userName', condition: 'userName like \'%{{this.model.userName}}%\' and address like \'{{this.model.address}}\''},
+  {name: 'address', condition: 'userName like \'%{{this.model.userName}}%\' and address like \'{{this.model.address}}\''}
+]
+
+// 第二个分页组件的查询条件
+let namedConditions2 = [
+  {name: 'userName', condition: 'userName like \'%{{this.model.userName}}%\' and address like \'{{this.model.address}}\''},
+  {name: 'address', condition: 'userName like \'%{{this.model.userName}}%\' and address like \'{{this.model.address}}\''}
+]
+
 export default {
+  data () {
+    return {
+      model1: {exps: namedConditions1},
+      model2: {exps: namedConditions2}
+    }
+  },
   methods: {
     // 如果要在外部拼定制查询条件，用此函数
     // param (pairs) {

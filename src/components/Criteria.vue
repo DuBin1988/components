@@ -1,6 +1,6 @@
 <template>
   <span>
-    <partial name="criteria"></partial>
+    <partial name="default"></partial>
   </span>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   beforeCompile () {
     this.model.names = []
-    let elements = this.$options.partials['criteria'].querySelectorAll('[condition]')
+    let elements = this.$options.partials['default'].querySelectorAll('[condition]')
     // each callback is not used on elements array here because of function context issues
     for (let i = 0; i < elements.length; i++) {
       let el = elements[i]
@@ -23,18 +23,24 @@ export default {
       } catch (e) {
         console.log('Evaluation error: ' + defaultvalue)
       }
+      // this.model.names放的是查询条件
       this.model.names.push({'name': name, 'value': value})
     }
   },
 
-  props: ['model'],
+  data () {
+    return {
+      model: {},
+      condition: ''
+    }
+  },
 
   methods: {
     search (params) {
       let condition
-      // 如果查询条件比较复杂，从外面获得
+      // 如果查询条件比较复杂，由上层组件自己产生
       let parent = this.$parent
-      while (parent) {
+      while (params && parent) {
         if (parent.$options && parent.$options && parent.$options.methods && parent.$options.methods[params]) {
           condition = parent.$options.methods[params].call(this.model, this.model.names)
           break
@@ -43,18 +49,21 @@ export default {
         }
       }
 
+      // 产生查询条件
       if (!condition) {
         condition = ' 1=1 '
-        this.model.names.map((pair) => {
+        this.model.names.forEach((pair) => {
           let value = this.model[pair.name]
-          if (value && value.length > 0) {
+          console.log(`name=${pair.name}, value=${value}`)
+          if (value && (value + '').length > 0) {
             condition += ' and ' + pair.value.replace('{}', this.model[pair.name] + '')
           }
         })
       }
 
-      this.model.http.condition = {condition: ' ' + condition + ' '}
-      this.model.store.dispatch('CRITERIA_CHANGED')
+      // 通知外部查询条件变化了
+      this.condition = condition
+      this.$dispatch('condition-changed', this.condition)
     }
   }
 }
