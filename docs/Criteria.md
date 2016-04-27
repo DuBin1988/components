@@ -36,4 +36,4 @@
 
 ## 事件
 
-- condition-changed: 查询条件已生成，事件参数为产生的查询条件。
+- condition-changed: 查询条件生成时触发，事件参数为：{ condition:this.condition, model:this.model }

@@ -62,7 +62,10 @@ export default {
 
       // 通知外部查询条件变化了
       this.condition = condition
-      this.$dispatch('condition-changed', this.condition)
+      this.$dispatch('condition-changed', {
+        condition: this.condition,
+        model: this.model
+      })
     }
   }
 }
