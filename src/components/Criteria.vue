@@ -15,7 +15,6 @@ export default {
       let name = el.getAttribute('v-model').substring('model.'.length)
       let value = el.getAttribute('condition')
       let defaultvalue = el.getAttribute('defaultvalue')
-      console.log(defaultvalue)
       try {
         /*eslint-disable */
         this.model[name] = eval(defaultvalue)

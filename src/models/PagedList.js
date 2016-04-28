@@ -47,7 +47,6 @@ export default class PagedList {
 
     this.state = '查询'
     this.procParams()
-    console.log(JSON.stringify(this.params))
 
     Vue.http.post(`${this.url}/n`, JSON.stringify(this.params)).then(
       (response) => {
@@ -101,7 +100,6 @@ export default class PagedList {
     }
     // 对附加参数进行计算
     for (let name in this.paramSource) {
-      console.log(this.paramSource[name])
       /*eslint-disable */
       this.params[name] = eval(this.paramSource[name])
       /*eslint-enable */

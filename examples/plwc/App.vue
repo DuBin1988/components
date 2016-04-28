@@ -2,47 +2,47 @@
   <table>
     <tr valign="top">
       <td>
-        <paged-list-with-criteria :model="model1" url="/rs/sql/test.sql">
-          <span partial="customCriteria">
-            <div>
-            用户名2: <input type="text" v-model="model.userName" v-on:keyup.enter="search('param')" condition=" userName like '%{}%'" defaultvalue="'13'">
-            </div>
-            <div>
-            地址: <input type="text" v-model="model.address" condition=" address like '%{}%'" defaultvalue="this.model.address.split('').reverse().join('')">
-            密码: <input type="text" v-model="model.password" condition=" password > '{}'" defaultvalue="Date.now().toString()">
-            </div>
-            <div v-show="hasError">
-            {{error}}
-            </div>
-            <div>
-              <button v-on:click="search('param')" >查询</button>
-            </div>
-          </span>
-          <span partial="customList">
-            {{data.ENAME}} -- {{data.NAME}} -- {{data.F_PARENTNAME}}</span>
-          </span>
+        <paged-list-with-criteria :model="model1">
+          <criteria partial='criteria' v-ref:criteria @condition-changed='search'>
+            <span partial>
+              <div>
+              用户名:
+              <input type="text" v-model="model.userName" v-on:keyup.enter="search" id="userName"
+              condition="username like '%{}%'" defaultvalue="'13'">
+              </div>
+              <div v-show="model.hasError">{{ model.error }}</div>
+              <div>
+                <button v-on:click="search()">查询</button>
+              </div>
+            </span>
+          </criteria>
+          <list partial='list' :model="model.rows" select-mode='none'>
+            <template partial>
+              <tree :model='data'>
+                <span partial>{{ model.data.name }}</span>
+              </tree>
+            </template>
+          </list>
         </paged-list-with-criteria>
       </td>
       <td>
         <paged-list-with-criteria  :model="model2"  url="/rs/sql/test.sql" pageSize="30">
-          <span partial="customCriteria">
-            <div>
-            用户名: <input type="text" v-model="model.userName" v-on:keyup.enter="search('param')" condition="like '%{}%'" defaultvalue="'13'">
-            </div>
-            <div>
-            地址: <input type="text" v-model="model.address" condition="= '{}'" defaultvalue="this.model.address.split('').reverse().join('')">
-            密码: <input type="text" v-model="model.password" condition="> '{}'" defaultvalue="Date.now().toString()">
-            </div>
-            <div v-show="hasError">
-            {{error}}
-            </div>
-            <div>
-              <button v-on:click="search('param')" >查询</button>
-            </div>
-          </span>
-          <span partial="customList">
-            {{data.ENAME}} -- {{data.NAME}} -- {{data.F_PARENTNAME}}</span>
-          </span>
+          <criteria partial='criteria' v-ref:criteria @condition-changed='search'>
+            <span partial>
+              <div>
+              地址:
+              <input type="text" v-model="model.address" id="userName"
+              condition="address like '%{}%'">
+              </div>
+              <div v-show="model.hasError">{{ model.error }}</div>
+              <div>
+                <button v-on:click="search()">查询</button>
+              </div>
+            </span>
+          </criteria>
+          <list partial='list' :model="model.rows">
+            <span partial>{{ data.name }}</span>
+          </list>
         </paged-list-with-criteria>
       </td>
     </tr>
@@ -51,41 +51,28 @@
 
 <script>
 import PagedListWithCriteria from '../../src/components/PagedListWithCriteria'
-
-// 第一个分页组件的查询条件
-let namedConditions1 = [
-  {name: 'userName', condition: 'userName like \'%{{this.model.userName}}%\' and address like \'{{this.model.address}}\''},
-  {name: 'address', condition: 'userName like \'%{{this.model.userName}}%\' and address like \'{{this.model.address}}\''}
-]
-
-// 第二个分页组件的查询条件
-let namedConditions2 = [
-  {name: 'userName', condition: 'userName like \'%{{this.model.userName}}%\' and address like \'{{this.model.address}}\''},
-  {name: 'address', condition: 'userName like \'%{{this.model.userName}}%\' and address like \'{{this.model.address}}\''}
-]
+import Criteria from '../../src/components/Criteria'
+import List from '../../src/components/List'
+import Tree from '../../src/components/Tree'
+import PagedList from '../../src/models/PagedList'
+import TreeNode from '../../src/models/TreeNode'
 
 export default {
   data () {
     return {
-      model1: {exps: namedConditions1},
-      model2: {exps: namedConditions2}
+      model1: new PagedList('/rs/sql/project.sql', 2, {
+        params: {
+          name: 'this.model.userName'
+        },
+        types: {
+          default (row) {
+            return new TreeNode(row, '/rs/sql/subproject.sql')
+          }
+        }
+      }),
+      model2: new PagedList('/rs/sql/test.sql', 4)
     }
   },
-  methods: {
-    // 如果要在外部拼定制查询条件，用此函数
-    // param (pairs) {
-    //   // 回调，提供给后台请求参数
-    //   let condition = ' 1 = 1'
-    //   let that = this
-    //   pairs.map((pair) => {
-    //     let value = that[pair.name]
-    //     if (value && value.length > 0) {
-    //       condition += ' and ' + pair.value.replace('{}', value)
-    //     }
-    //   })
-    //   return condition
-    // }
-  },
-  components: { PagedListWithCriteria }
+  components: { PagedListWithCriteria, Criteria, List, Tree }
 }
 </script>

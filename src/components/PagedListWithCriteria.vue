@@ -1,55 +1,32 @@
 <template>
-  <div id='app'>
-    <criteria :model="model">
-      <partial name="customCriteria" partial="criteria">
-      </partial>
-    </criteria>
-    <list :model="listModel">
-      <partial name="customList" partial="default">
-      </partial>
-    </list>
-    <pager :model="pagerModel">
-      <span partial='pager' v-show='model.visible'>
-        共{{model.totalPage}}页 当前第{{model.pageIndex}}页
-        <a href="#" @click="gotoFirst">首页</a>
-        <a href="#" @click="gotoPre">上页</a>
-        <a href="#" @click="gotoNext">下页</a>
-        <a href="#" @click="gotoLast">末页</a>
-      </span>
-    </pager>
+  <div>
+    <p v-if="model.state === '查询'">正在查询，请耐心等待！</p>
+    <div v-show="model.state !== '查询'">
+      <partial name="criteria"></partial>
+      <p v-if="model.state === '初始'">请输入查询条件进行查询！</p>
+      <p v-if="model.state === '错误'">{{ model.error }}</p>
+      <div v-show="model.state === '正确'">
+        <partial name="list"></partial>
+        <pager :model="model" @page-changed='loadPage' :page-size='model.pageSize'>
+        </pager>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import Pager from '../../src/components/Pager'
-import Criteria from '../../src/components/Criteria'
-import List from '../../src/components/List'
-import PagedListWithCriteriaModel from '../../src/models/PagedListWithCriteriaModel'
 
 export default {
   props: ['model'],
-  beforeCompile () {
-    let pageSize = this.$options.el.attributes.pageSize
-    if (pageSize) {
-      pageSize = pageSize.nodeValue
-    } else {
-      pageSize = 20
+  methods: {
+    loadPage (pageNo) {
+      this.model.loadPage(pageNo)
+    },
+    search (args) {
+      this.model.search(args.condition, args.model)
     }
-
-    // keep exps for future use
-    this.$data.model.exps = this.$data.model.exps || []
-    let re = /\{\{(.*?)\}\}/g
-    this.$data.model.exps.forEach((exp) => {
-      let array
-      exp.observables = []
-      while ((array = re.exec(exp.condition)) != null) {
-        exp.observables.push({literal: array[0], exp: array[1]})
-      }
-    })
-
-    this.$data = Object.assign({}, this.$data, new PagedListWithCriteriaModel(this.$options.el.attributes.url.nodeValue,
-      pageSize, this.$data.model))
   },
-  components: { Criteria, List, Pager }
+  components: { Pager }
 }
 </script>

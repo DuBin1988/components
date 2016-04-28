@@ -39,7 +39,6 @@ export default class TreeNode {
   reload () {
     Vue.http.post(this.path, {id: this.data.id}).then(
       a => {
-        console.log('loaded data' + a.data)
         this.children = Array.from(
           a.data, value => new TreeNode(value, this.path, this)
         )
@@ -50,8 +49,6 @@ export default class TreeNode {
 
   // 加载子节点
   loadChild () {
-    console.log('sub size is ' + this.children.length)
-
     if (this.loaded) {
       return
     }

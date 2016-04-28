@@ -4,50 +4,19 @@
 ## 用法
 ### 引入组件
 ``` html
-<paged-list-with-criteria url="/rs/sql/test.sql" pageSie="20">
-  <span partial="customCriteria">
-  </span>
-  <span partial="customList">
-  </span>
+<paged-list-with-criteria :model={model}>
+  <criteria partial="criteria">
+  </criteria>
+  <list partial="list">
+  </list>
 </paged-list-with-criteria>
 ```
-`<paged-list-with-criteria>`为组件对应的html标签, 该标签需要指定两个属性
-- url: 查询时对应的后台sql文件
-- pageSize: 每页行数，不指定的话默认为20
+`<paged-list-with-criteria>`为组件对应的html标签, 组件的model参数，必须是一个PagedList。
 
-### 指定查询条件数据
-```
-// 分页组件的查询条件
-let namedConditions1 = [
-  {name: 'userName', condition: 'userName like \'%{{this.model.userName}}%\' and address like \'{{this.model.address}}\''},
-  {name: 'address', condition: 'userName like \'%{{this.model.userName}}%\' and address like \'{{this.model.address}}\''}
-]
-```
-指定组件数据
-```
-data () {
-  return {
-    model1: {exps: namedConditions1},
-    model2: {exps: namedConditions2}
-  }
-},
-```
+### 指定查询条件组件
+使用partial="criteria"指定查询条件组件，查询条件组件需满足下面的接口要求:
+- 当查询条件产生后，需对外提供condition-changed事件
+一般情况下，用criteria组件产生查询条件，使用方式见说明。
 
-### 指定查询条件片区 customCriteria
-- partial="customCriteria" 不需要更改
-- 示例       <div>
-            地址: <input type="text" v-model="model.address" condition=" address like '%{}%'" defaultvalue="this.model.address.split('').reverse().join('')">
-            </div>
-            <div>
-            <button v-on:click="search('param')" >查询</button>
-            </div>
-  其中 v-model 指定查询条件对象的字段，字段前冠以`model.`前缀，`condition`属性为查询条件对应的查询条件, `defaultvalue`为默认值，可以是字符串如'123'，或者为javascript表达式，如引用model中的数据时表达式要以`this.model.`开始
-
-  ```html
-  <button v-on:click="search('param')" >查询</button>
-  ``` 请保持不变
-
-
-### 指定列表行片区 customList
-- partial="customList" 不需要更改，只需指定span的内容
-- 示例 {{`data.`ENAME}} -- {{`data.`NAME}} -- {{`data.`F_PARENTNAME}}</span> 注意字段名前必须为`data.`
+### 指定列表显示区
+使用partial="list"指定列表显示组件。常用列表显示组件有List，DataGrid。
