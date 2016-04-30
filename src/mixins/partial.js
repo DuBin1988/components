@@ -34,13 +34,13 @@ export default {
       }
     })
 
-    // 找到有a-partial属性的元素，把partail内容放到该元素下面
+    // 找到有a-partial属性的元素，把partail内容放到该元素内容后面
     $('[a-partial]', this.$el).each((i, el) => {
       let name = el.getAttribute('a-partial')
       if (partials[name]) {
-        el.innerHTML = partials[name].innerHTML
+        el.innerHTML += partials[name].innerHTML
       } else if (this.$parent && this.$parent.$options.partials && this.$parent.$options.partials[name]) {
-        el.innerHTML = this.$parent.$options.partials[name].innerHTML
+        el.innerHTML += this.$parent.$options.partials[name].innerHTML
       }
     })
   },

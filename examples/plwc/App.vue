@@ -40,9 +40,16 @@
               </div>
             </span>
           </criteria>
-          <list partial='list' :model="model.rows">
-            <span partial>{{ data.name }}</span>
-          </list>
+          <data-grid partial='list' :model="model.rows">
+            <template partial='head'>
+              <tr>
+                <th>名称</th>
+              </tr>
+            </template>
+            <template partial='body'>
+              <td >{{data.name}}</td>
+            </template>
+          </data-grid>
         </paged-list-with-criteria>
       </td>
     </tr>
@@ -53,6 +60,7 @@
 import PagedListWithCriteria from '../../src/components/PagedListWithCriteria'
 import Criteria from '../../src/components/Criteria'
 import List from '../../src/components/List'
+import DataGrid from '../../src/components/DataGrid'
 import Tree from '../../src/components/Tree'
 import PagedList from '../../src/models/PagedList'
 import TreeNode from '../../src/models/TreeNode'
@@ -73,6 +81,6 @@ export default {
       model2: new PagedList('/rs/sql/test.sql', 4)
     }
   },
-  components: { PagedListWithCriteria, Criteria, List, Tree }
+  components: { PagedListWithCriteria, Criteria, List, DataGrid, Tree }
 }
 </script>
