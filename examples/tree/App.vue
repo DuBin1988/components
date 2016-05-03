@@ -12,7 +12,7 @@ import Tree from '../../src/components/Tree'
 export default {
   data () {
     return {
-      model: {
+      model: [{
         name: '根节点',
         size: 1,
         children: [{
@@ -30,7 +30,7 @@ export default {
             }]
           }]
         }]
-      }
+      }]
     }
   },
   components: { Tree }

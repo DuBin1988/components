@@ -1,40 +1,28 @@
 <template>
-  <ul v-if="model">
+  <ul>
     <li
+      v-for='model in model'
       @click="select(model)"
       class="tree"
       v-bind:class="{ 'selected': isSelected(model) }">
-      <span v-if="isFolder" @click="toggle">
-        <span v-if="open">v</span>
-        <span v-if="!open">&gt;</span>
-      </span>
-      <span v-if="!isFolder">
-        &nbsp;
+      <span v-for='n of model.level'>&nbsp;</span>
+      <span v-if="isFolder(model)" @click="toggle(model)">
+        <span v-if="open">-</span>
+        <span v-if="!open">+</span>
       </span>
       <partial name='default'></partial>
+      <span v-if='model.state === "错误"'>x</span>
     </li>
-    <div
-      v-show='open'
-      v-for='model in model.children'>
-      <tree
-        :model='model'>
-      </tree>
-    </div>
   </ul>
 </template>
 
 <script>
 import selector from '../mixins/selector'
 import TreeMixin from '../mixins/TreeMixin'
-import Tree from './Tree'
 
 export default {
-  name: 'tree',
   props: ['model'],
-  mixins: [selector, TreeMixin],
-  components: {
-    Tree
-  }
+  mixins: [selector, TreeMixin]
 }
 </script>
 

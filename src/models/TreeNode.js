@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import store from '../vuex/HttpStore'
+import { http } from '../vuex/HttpActions'
 
 export default class TreeNode {
   // 把一批普通对象转换成树节点
@@ -37,12 +39,15 @@ export default class TreeNode {
 
   // 重新加载所有子节点
   reload () {
-    Vue.http.post(this.path, {id: this.data.id}).then(
+    http(store, this.path, {id: this.data.id},
       a => {
         this.children = Array.from(
           a.data, value => new TreeNode(value, this.path, this)
         )
         this.size = this.children.length
+      },
+      a => {
+        Vue.set(this, 'state', '错误')
       }
     )
   }
