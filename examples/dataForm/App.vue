@@ -1,8 +1,8 @@
 <template>
   <div id='app'>
-    <p v-if="isBusy">正在查询，请耐心等待！</p>
-    <div v-show="!isBusy">
-      <table>
+    <img class="logo" src="../../src/assets/logo.png">
+    <http-busy>
+      <table partial>
         <tr>
           <td>
             <paged-list-with-criteria :model="list">
@@ -46,18 +46,17 @@
           </td>
         </tr>
       </table>
-    </div>
+    </http-busy>
   </div>
 </template>
 
 <script>
+import HttpBusy from '../../src/components/HttpBusy'
 import DataForm from '../../src/components/DataForm'
 import Criteria from '../../src/components/Criteria'
 import DataGrid from '../../src/components/DataGrid'
 import PagedListWithCriteria from '../../src/components/PagedListWithCriteria'
 import PagedList from '../../src/models/PagedList'
-import store from '../../src/vuex/HttpStore'
-import { getIsBusy } from '../../src/vuex/HttpGetters'
 
 export default {
   data () {
@@ -68,12 +67,6 @@ export default {
       }
     }
   },
-  vuex: {
-    getters: {
-      isBusy: getIsBusy
-    }
-  },
-  store,
-  components: { DataForm, Criteria, DataGrid, PagedListWithCriteria }
+  components: { HttpBusy, DataForm, Criteria, DataGrid, PagedListWithCriteria }
 }
 </script>

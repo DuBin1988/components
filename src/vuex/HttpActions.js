@@ -25,12 +25,22 @@ export const http = function ({dispatch, state}, url, body, success, fail) {
   // 如果未超过发送限制，直接发送请求
   if (state.count < 5) {
     dispatch('INC_COUNT')
+    // 没有body，发送空对象
+    if (body) {
+      body = {}
+    }
     Vue.http.post(url, JSON.stringify(body)).then((response) => {
       proc(dispatch, state, response)
-      success(response)
+      // 有success，调用success
+      if (success) {
+        success(response)
+      }
     }).catch((response) => {
       proc(dispatch, state, response)
-      fail(response)
+      // 有fail，调用fail
+      if (fail) {
+        fail(response)
+      }
     })
   } else {
     // 将发送请求放到待发送队列中
