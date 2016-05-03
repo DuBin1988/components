@@ -4,7 +4,7 @@ export default {
   beforeCompile () {
     // 从父传递给自己的内容中，获取partial内容
     let partials = {}
-    $('[partial]', this.$options._content).each((i, el) => {
+    $('> [partial]', this.$options._content).each((i, el) => {
       let name = el.getAttribute('partial')
       // 未给出具体partial名，用default
       if (!name) {

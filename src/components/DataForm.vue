@@ -3,11 +3,10 @@
     <partial name='default'></partial>
     <modal :show.sync="show">
       <div slot="modal-header" class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">提醒</h4>
       </div>
-      <div slot="modal-body" class="modal-body">...</div>
+      <div slot="modal-body" class="modal-body"> {{ msg }} </div>
     </modal>
-    <button @click="showModal">显示model</button>
   </div>
 </template>
 
@@ -18,7 +17,8 @@ import { modal } from 'vue-strap'
 export default {
   data () {
     return {
-      show: false
+      show: false,
+      msg: ''
     }
   },
   props: ['model'],
@@ -30,8 +30,14 @@ export default {
   methods: {
     post (url) {
       http(this.$store, url, this.model,
-        (response) => { this.show = true },
-        (response) => { this.show = true }
+        (response) => {
+          this.msg = '操作成功'
+          this.show = true
+        },
+        (response) => {
+          this.msg = `错误：${response}`
+          this.show = true
+        }
       )
     },
     showModal () {

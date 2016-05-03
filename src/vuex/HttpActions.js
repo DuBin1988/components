@@ -26,9 +26,10 @@ export const http = function ({dispatch, state}, url, body, success, fail) {
   if (state.count < 5) {
     dispatch('INC_COUNT')
     // 没有body，发送空对象
-    if (body) {
+    if (!body) {
       body = {}
     }
+
     Vue.http.post(url, JSON.stringify(body)).then((response) => {
       proc(dispatch, state, response)
       // 有success，调用success

@@ -10,8 +10,10 @@
 <script>
 export default {
   props: {
-    isBusy: Boolean,
-    default: false
+    isBusy: {
+      type: Boolean,
+      default: false
+    }
   }
 }
 </script>

@@ -1,4 +1,5 @@
-import Vue from 'vue'
+import store from '../vuex/HttpStore'
+import { http } from '../vuex/HttpActions'
 
 export default class PagedList {
   // 用url及pageSize构造
@@ -48,7 +49,7 @@ export default class PagedList {
     this.state = '查询'
     this.procParams()
 
-    Vue.http.post(`${this.url}/n`, JSON.stringify(this.params)).then(
+    http(store, `${this.url}/n`, this.params,
       (response) => {
         if (response.data.n === 0) {
           this.state = '错误'
@@ -59,8 +60,7 @@ export default class PagedList {
         this.count = response.data.n
         // 加载第一页数据
         this.loadPage(1)
-      }
-    ).catch(
+      },
       () => {
         this.state = '错误'
         this.error = '提取数据出错，请重试'
@@ -78,12 +78,11 @@ export default class PagedList {
   loadPage (pageNo) {
     this.state = '查询'
 
-    Vue.http.post(`${this.url}?pageNo=${pageNo}&pageSize=${this.pageSize}`, JSON.stringify(this.params)).then(
+    http(store, `${this.url}?pageNo=${pageNo}&pageSize=${this.pageSize}`, this.params,
       (response) => {
         this.state = '正确'
         this.rows = Array.from(response.data, (row) => this.from(row))
-      }
-    ).catch(
+      },
       () => {
         this.state = '错误'
         this.error = '提取数据出错，请重试'
