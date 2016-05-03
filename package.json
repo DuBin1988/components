@@ -17,7 +17,9 @@
     "url": "https://github.com/DuBin1988/vue-client"
   },
   "dependencies": {
-    "vue": "^1.0.17"
+    "bootstrap": "^3.3.6",
+    "vue": "^1.0.17",
+    "vueboot": "^0.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
