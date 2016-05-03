@@ -38,27 +38,36 @@ export default class TreeNode {
   }
 
   // 重新加载所有子节点
-  reload () {
+  reload (success, fail) {
     http(store, this.path, {id: this.data.id},
       a => {
         this.children = Array.from(
           a.data, value => new TreeNode(value, this.path, this)
         )
         this.size = this.children.length
+        this.loaded = true
+
+        Vue.set(this, 'state', '成功')
+        // 有成功回调函数
+        if (success) {
+          success()
+        }
       },
       a => {
         Vue.set(this, 'state', '错误')
+        if (fail) {
+          fail()
+        }
       }
     )
   }
 
   // 加载子节点
-  loadChild () {
+  loadChild (success, fail) {
     if (this.loaded) {
       return
     }
 
-    this.reload()
-    this.loaded = true
+    this.reload(success, fail)
   }
 }

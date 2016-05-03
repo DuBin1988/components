@@ -16,13 +16,9 @@
     <p v-if="model.state === '初始'">请输入查询条件进行查询！</p>
     <p v-if="model.state === '错误'">{{ model.error }}</p>
     <template v-if="model.state === '正确'">
-      <list :model="model.rows" select-mode='none'>
-        <template partial>
-          <tree :model='data'>
-            <span partial>{{ model.data.name }}</span>
-          </tree>
-        </template>
-      </list>
+      <tree :model="model.rows">
+        <span partial>{{ model.data.name }}</span>
+      </tree>
       <p>{{ model.rows.length }}</p>
       <pager :model="model" @page-changed='loadPage'>
       </pager>

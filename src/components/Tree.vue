@@ -7,10 +7,11 @@
       v-bind:class="{ 'selected': isSelected(model) }">
       <span v-for='n of model.level'>&nbsp;</span>
       <span v-if="isFolder(model)" @click="toggle(model)">
-        <span v-if="open">-</span>
-        <span v-if="!open">+</span>
+        <span v-if="model.open">-</span>
+        <span v-else>+</span>
       </span>
       <partial name='default'></partial>
+      <span>{{ model.state }}</span>
       <span v-if='model.state === "错误"'>x</span>
     </li>
   </ul>
