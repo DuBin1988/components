@@ -8,7 +8,6 @@
 
 <script>
 import Busy from './Busy'
-import store from '../../src/vuex/store'
 import { getIsBusy } from '../../src/vuex/getters'
 
 export default {
@@ -17,7 +16,6 @@ export default {
       isBusy: getIsBusy
     }
   },
-  store,
   components: { Busy }
 }
 </script>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import store from '../vuex/store'
-import { http } from '../vuex/actions'
+import { http, showMessage } from '../vuex/actions'
 
 export default class TreeNode {
   // 把一批普通对象转换成树节点
@@ -54,6 +54,7 @@ export default class TreeNode {
         }
       },
       a => {
+        showMessage(store, '加载子节点出错')
         Vue.set(this, 'state', '错误')
         if (fail) {
           fail()

@@ -50,5 +50,6 @@ export const http = function ({dispatch, state}, url, body, success, fail) {
 }
 
 // 显示提醒对话框
-export const alter = function(msg) {
+export const showMessage = function ({dispatch, state}, msg) {
+  dispatch('SHOW_MESSAGE', msg)
 }

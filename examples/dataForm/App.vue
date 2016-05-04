@@ -1,16 +1,16 @@
 <template>
   <div id='app'>
-    <http-busy>
+    <base-app>
       <project partial></project>
-    </http-busy>
+    </base-app>
   </div>
 </template>
 
 <script>
-import HttpBusy from '../../src/components/HttpBusy'
+import BaseApp from '../../src/components/BaseApp'
 import Project from './Project'
 
 export default {
-  components: { HttpBusy, Project }
+  components: { BaseApp, Project }
 }
 </script>
