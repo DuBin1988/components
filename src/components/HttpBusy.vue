@@ -8,8 +8,8 @@
 
 <script>
 import Busy from './Busy'
-import store from '../../src/vuex/HttpStore'
-import { getIsBusy } from '../../src/vuex/HttpGetters'
+import store from '../../src/vuex/store'
+import { getIsBusy } from '../../src/vuex/getters'
 
 export default {
   vuex: {

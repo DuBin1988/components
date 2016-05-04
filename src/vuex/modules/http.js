@@ -1,7 +1,4 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
+import { SET_BUSY, INC_COUNT, DEC_COUNT } from '../MutationTypes'
 
 const state = {
   isBusy: false,
@@ -10,20 +7,20 @@ const state = {
 }
 
 const mutations = {
-  SET_BUSY (state, v) {
+  [SET_BUSY] (state, v) {
     state.isBusy = v
   },
 
-  INC_COUNT (state) {
+  [INC_COUNT] (state) {
     state.count++
   },
 
-  DEC_COUNT (state) {
+  [DEC_COUNT] (state) {
     state.count--
   }
 }
 
-export default new Vuex.Store({
+export default {
   state,
   mutations
-})
+}

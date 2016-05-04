@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { http } from '../../src/vuex/HttpActions'
+import { http } from '../../src/vuex/actions'
 import { modal } from 'vue-strap'
 
 export default {

@@ -1,5 +1,5 @@
-import store from '../vuex/HttpStore'
-import { http } from '../vuex/HttpActions'
+import store from '../vuex/store'
+import { http } from '../vuex/actions'
 
 export default class PagedList {
   // 用url及pageSize构造

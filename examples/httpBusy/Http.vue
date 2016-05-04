@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { http } from '../../src/vuex/HttpActions'
+import { http } from '../../src/vuex/actions'
 
 export default {
   data () {

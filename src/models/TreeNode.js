@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import store from '../vuex/HttpStore'
-import { http } from '../vuex/HttpActions'
+import store from '../vuex/store'
+import { http } from '../vuex/actions'
 
 export default class TreeNode {
   // 把一批普通对象转换成树节点
