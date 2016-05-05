@@ -5,20 +5,20 @@
 </template>
 
 <script>
-import { http, showMessage } from '../../src/vuex/actions'
+import { post } from '../../src/vuex/actions'
 
 export default {
   props: ['model'],
   vuex: {
     actions: {
-      http
+      post
     }
   },
   methods: {
-    post (url) {
-      http(this.$store, url, this.model,
-        (response) => { showMessage(this.$store, '操作成功') },
-        (response) => { showMessage(this.$store, `错误：${response}`) }
+    save (url) {
+      post(this.$store, url, this.model,
+        (response) => { this.$showMessage(this.$store, '操作成功') },
+        (response) => { this.$showMessage(this.$store, `错误：${response}`) }
       )
     }
   }

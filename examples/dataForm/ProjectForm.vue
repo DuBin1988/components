@@ -6,7 +6,7 @@
       <input type="text" v-model="model.name">
       </div>
       <div>
-        <button @click="post('/rs/entity/t_project')" >保存</button>
+        <button @click="save('/rs/entity/t_project')" >保存</button>
         <button @click='$parent.test'>测试父组件</button>
       </div>
     </div>

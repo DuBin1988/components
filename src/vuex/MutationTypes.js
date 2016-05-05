@@ -9,3 +9,6 @@ export const DEC_COUNT = 'DEC_COUNT'
 
 // 显示系统提示框
 export const SHOW_MESSAGE = 'SHOW_MESSAGE'
+
+// 取消系统提示
+export const CLOSE_MESSAGE = 'CLOSE_MESSAGE'

@@ -17,7 +17,10 @@
     <p v-if="model.state === '错误'">{{ model.error }}</p>
     <template v-if="model.state === '正确'">
       <tree :model="model.rows">
-        <span partial>{{ model.data.name }}</span>
+        <span partial>
+          {{ model.data.name }}
+          <button v-if='isSelected(model)' @click='del("rs/entity/t_project", model.data)'>x</button>
+        </span>
       </tree>
       <p>{{ model.rows.length }}</p>
       <pager :model="model" @page-changed='loadPage'>

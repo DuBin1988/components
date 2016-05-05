@@ -1,5 +1,5 @@
 import store from '../vuex/store'
-import { http } from '../vuex/actions'
+import { post } from '../vuex/actions'
 
 export default class PagedList {
   // 用url及pageSize构造
@@ -49,7 +49,7 @@ export default class PagedList {
     this.state = '查询'
     this.procParams()
 
-    http(store, `${this.url}/n`, this.params,
+    post(store, `${this.url}/n`, this.params,
       (response) => {
         if (response.data.n === 0) {
           this.state = '错误'
@@ -78,7 +78,7 @@ export default class PagedList {
   loadPage (pageNo) {
     this.state = '查询'
 
-    http(store, `${this.url}?pageNo=${pageNo}&pageSize=${this.pageSize}`, this.params,
+    post(store, `${this.url}?pageNo=${pageNo}&pageSize=${this.pageSize}`, this.params,
       (response) => {
         this.state = '正确'
         this.rows = Array.from(response.data, (row) => this.from(row))

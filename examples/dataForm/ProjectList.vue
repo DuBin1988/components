@@ -16,11 +16,13 @@
     <data-grid partial='list' :model="model.rows">
       <template partial='head'>
         <tr>
+          <th>操作</th>
           <th>名称</th>
         </tr>
       </template>
       <template partial='body'>
-        <td >{{data.name}}</td>
+        <td><button @click='delete(data)'>x</button></td>
+        <td>{{data.name}}</td>
       </template>
     </data-grid>
   </paged-list-with-criteria>

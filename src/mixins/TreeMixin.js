@@ -62,6 +62,9 @@ export default {
     },
     isFolder (data) {
       return data.size > 0
+    },
+    delete (url, data) {
+      data.delete()
     }
   }
 }
