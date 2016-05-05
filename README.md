@@ -2,6 +2,16 @@
 
 提供组件制作基础及部分通用组件。
 
+## 目录结构
+
+* components: 提供的各种组件
+* mixins: 方便调用的混合
+* models: 各类数据模型
+* plugins: 系统提供的插件
+* stores: 特殊的数据存储
+* util: 各类工具
+* vuex: 对vuex的支持类
+
 ## 内容
 
 * [partial](docs/partial.md) - 对vue slot的不足进行弥补，slot不支持子组件scope，partial支持子组件scope。

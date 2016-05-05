@@ -26,9 +26,15 @@ export default {
   methods: {
     confirm () {
       this.$closeMessage()
+      if (MessageBox.resolve) {
+        MessageBox.resolve()
+      }
     },
     close () {
       this.$closeMessage()
+      if (MessageBox.reject) {
+        MessageBox.reject()
+      }
     }
   },
   components: { modal }
