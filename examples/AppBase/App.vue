@@ -1,17 +1,17 @@
 <template>
   <div id='app'>
-    <base-app>
+    <app-base>
       <app-content partial>
       </app-content>
-    </base-app>
+    </app-base>
   </div>
 </template>
 
 <script>
-import BaseApp from '../../src/components/BaseApp'
+import AppBase from '../../src/components/AppBase'
 import AppContent from './AppContent'
 
 export default {
-  components: { BaseApp, AppContent }
+  components: { AppBase, AppContent }
 }
 </script>

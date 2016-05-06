@@ -21,7 +21,7 @@
         </tr>
       </template>
       <template partial='body'>
-        <td><button @click='delete(data)'>x</button></td>
+        <td><button v-if='isSelected(data)' @click='del("rs/entity/t_project", data)'>x</button></td>
         <td>{{data.name}}</td>
       </template>
     </data-grid>

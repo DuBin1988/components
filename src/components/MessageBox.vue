@@ -6,8 +6,8 @@
       </div>
       <div slot="modal-body" class="modal-body"> {{ msg.msg }} </div>
       <div slot="modal-footer" class="modal-footer">
-        <button type="button" class="btn btn-default" @click='close'>取消</button>
-        <button type="button" class="btn btn-success" @click='confirm'>确认</button>
+        <button v-if="msg.cancelShow" type="button" class="btn btn-default" @click='close'>取消</button>
+        <button v-if="msg.confirmShow" type="button" class="btn btn-success" @click='confirm'>确认</button>
       </div>
     </modal>
   </div>
@@ -26,15 +26,11 @@ export default {
   methods: {
     confirm () {
       this.$closeMessage()
-      if (MessageBox.resolve) {
-        MessageBox.resolve()
-      }
+      MessageBox.resolve('confirm')
     },
     close () {
       this.$closeMessage()
-      if (MessageBox.reject) {
-        MessageBox.reject()
-      }
+      MessageBox.resolve('cancel')
     }
   },
   components: { modal }

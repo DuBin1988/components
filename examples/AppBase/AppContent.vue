@@ -9,8 +9,11 @@ export default {
   methods: {
     post (url) {
       this.$post(url, {}).then(
-        () => console.log('发送成功'),
-        () => console.log('发送失败')
+        () => { this.$showMessage('发送请求成功') }
+      ).catch(
+        (response) => {
+          this.$showMessage(`发送请求失败: ${response.status}`)
+        }
       )
     }
   }

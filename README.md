@@ -33,8 +33,13 @@ examples
 
 通过list.html进行访问
 
-### 包含的测试例子
+## 测试例子
 
+* AppBase - 对AppBase进行测试，发送错误请求，弹出错误对话框。
+* Busy - 测试Busy组件。
+* Criteria - 对查询条件组件进行测试，点击查询，显示产生的条件。
+* DataForm - 对表单组件进行完整测试，可以把数据提交后台，提交后台的数据可以通过左边的DataGrid进行查询，查询出来的数据，当选中时，可以删除。
+* MessageBox - 对MessageBox进行测试，按下确定，或者取消按钮后，在控制台进行显示。
 * partial - 对partial进行测试
 * list - 对列表进行测试，产生10000条数据，测试列表性能
 * tree - 对树进行测试

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <busy :is-busy='isBusy'>
+    <busy :is-busy='http.isBusy'>
       <partial name='default' partial></partial>
     </busy>
   </div>
@@ -8,12 +8,12 @@
 
 <script>
 import Busy from './Busy'
-import { getIsBusy } from '../../src/vuex/getters'
+import HttpStore from '../plugins/HttpStore'
 
 export default {
-  vuex: {
-    getters: {
-      isBusy: getIsBusy
+  data () {
+    return {
+      http: HttpStore
     }
   },
   components: { Busy }

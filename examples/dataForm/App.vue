@@ -1,16 +1,16 @@
 <template>
   <div id='app'>
-    <base-app>
+    <app-base>
       <project partial></project>
-    </base-app>
+    </app-base>
   </div>
 </template>
 
 <script>
-import BaseApp from '../../src/components/BaseApp'
+import AppBase from '../../src/components/AppBase'
 import Project from './Project'
 
 export default {
-  components: { BaseApp, Project }
+  components: { AppBase, Project }
 }
 </script>

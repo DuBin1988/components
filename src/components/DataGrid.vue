@@ -17,7 +17,12 @@ import selector from '../mixins/selector'
 
 export default {
   props: ['model'],
-  mixins: [selector]
+  mixins: [selector],
+  methods: {
+    del (url, data) {
+      this.$delete(url, data)
+    }
+  }
 }
 </script>
 

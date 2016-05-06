@@ -1,16 +1,16 @@
 <template>
   <div id='app'>
-    <base-app>
+    <app-base>
       <list-tree partial></list-tree>
-    </base-app>
+    </app-base>
   </div>
 </template>
 
 <script>
-import BaseApp from '../../src/components/BaseApp'
+import AppBase from '../../src/components/AppBase'
 import ListTree from './ListTree'
 
 export default {
-  components: { BaseApp, ListTree }
+  components: { AppBase, ListTree }
 }
 </script>

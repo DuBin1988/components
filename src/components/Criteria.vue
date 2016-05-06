@@ -20,7 +20,7 @@ export default {
         this.model[name] = eval(defaultvalue)
         /*eslint-enable */
       } catch (e) {
-        console.log('Evaluation error: ' + defaultvalue)
+        console.warn(`Evaluation error, default: ${defaultvalue}, error: ${e}`)
       }
       // this.model.names放的是查询条件
       this.model.names.push({'name': name, 'value': value})

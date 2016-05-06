@@ -20,7 +20,7 @@
   />
 </div>
 <div>
-  <button v-on:click="search('param')">查询</button>
+  <button v-on:click="search()">查询</button>
 </div>
 ```
 其中 v-model 指定查询条件对象的字段，字段前冠以`model.`前缀，`condition`属性为查询条件对应的查询条件, `defaultvalue`为默认值，可以是字符串如'123'，或者为javascript表达式，如引用model中的数据时表达式要以`this.model.`开始

@@ -11,10 +11,8 @@
 <script>
 import HttpBusy from './HttpBusy'
 import MessageBox from './MessageBox'
-import store from '../../src/vuex/store'
 
 export default {
-  store,
   components: { HttpBusy, MessageBox }
 }
 </script>

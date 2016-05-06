@@ -4,7 +4,7 @@
       <span partial>
         <div>
         用户名:
-        <input type="text" v-model="model.userName" v-on:keyup.enter="search('param')" id="userName"
+        <input type="text" v-model="model.userName" v-on:keyup.enter="search" id="userName"
         condition="username like '%{}%'" defaultvalue="'13'">
         </div>
         <div>
@@ -23,7 +23,7 @@
         {{model.error}}
         </div>
         <div>
-          <button v-on:click="search()" >查询</button>
+          <button v-on:click="search" >查询</button>
         </div>
       </span>
     </criteria>
