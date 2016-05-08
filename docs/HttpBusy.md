@@ -4,10 +4,10 @@
 
 ## 用法
 
-用slot='normal'显示正常组件即可。
+用默认slot显示正常组件即可。
 
 ```html
 <http-busy>
-  <div slot='normal'>正常组件</div>
+  <div>正常组件</div>
 </http-busy>
 ```

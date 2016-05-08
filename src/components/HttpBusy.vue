@@ -1,7 +1,7 @@
 <template>
   <div>
     <busy :is-busy='http.isBusy'>
-      <slot name='normal' slot='normal'></slot>
+      <slot slot='normal'></slot>
       <p slot='busy'>正在等待服务器返回结果，请耐心等候！</p>
     </busy>
   </div>

@@ -4,11 +4,11 @@
 
 ## 用法
 
-用默认partial提供实际应用内容。
+用默认slot提供实际应用内容。
 
 ```html
 <app-base>
-  <app-content partial>
-  </app-content>
+  <div partial>
+  </div>
 </app-base>
 ```

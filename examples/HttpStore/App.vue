@@ -1,7 +1,7 @@
 <template>
   <div id='app'>
     <http-busy>
-      <div slot='normal'>
+      <div>
         <div>
           <button @click="post('rs/dd')">发送错误请求</button>
           <button @click="post('rs/dd', {rejectMsg: null})">无错误提醒发送</button>

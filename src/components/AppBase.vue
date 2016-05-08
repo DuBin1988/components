@@ -1,8 +1,7 @@
 <template>
   <div>
     <http-busy>
-      <partial name='default' partial>
-      </partial>
+      <slot></slot>
     </http-busy>
     <message-box></message-box>
   </div>
