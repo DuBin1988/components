@@ -7,56 +7,47 @@
 <script>
 export default {
   beforeCompile () {
-    this.model.names = []
     let elements = this.$options.partials['default'].querySelectorAll('[condition]')
     // each callback is not used on elements array here because of function context issues
     for (let i = 0; i < elements.length; i++) {
       let el = elements[i]
       let name = el.getAttribute('v-model').substring('model.'.length)
-      let value = el.getAttribute('condition')
-      let defaultvalue = el.getAttribute('defaultvalue')
+      let conditon = el.getAttribute('condition')
+      // this.conditions放的是查询条件
+      this.conditions[name] = conditon
+
+      // 计算默认值
+      let defaultValue = el.getAttribute('default-value')
       try {
         /*eslint-disable */
-        this.model[name] = eval(defaultvalue)
+        this.model[name] = eval(defaultValue)
         /*eslint-enable */
       } catch (e) {
-        console.warn(`Evaluation error, default: ${defaultvalue}, error: ${e}`)
+        console.warn(`Evaluation error, default: ${defaultValue}, error: ${e}`)
       }
-      // this.model.names放的是查询条件
-      this.model.names.push({'name': name, 'value': value})
     }
   },
 
   data () {
     return {
+      // 保存用户输入的数据
       model: {},
+      // 配置的条件内容
+      conditions: {},
+      // 最终产生的查询条件
       condition: ''
     }
   },
 
   methods: {
-    search (params) {
-      let condition
-      // 如果查询条件比较复杂，由上层组件自己产生
-      let parent = this.$parent
-      while (params && parent) {
-        if (parent.$options && parent.$options && parent.$options.methods && parent.$options.methods[params]) {
-          condition = parent.$options.methods[params].call(this.model, this.model.names)
-          break
-        } else {
-          parent = parent.$parent
-        }
-      }
-
+    search () {
+      let condition = ' 1=1 '
       // 产生查询条件
-      if (!condition) {
-        condition = ' 1=1 '
-        this.model.names.forEach((pair) => {
-          let value = this.model[pair.name]
-          if (value && (value + '').length > 0) {
-            condition += ' and ' + pair.value.replace('{}', this.model[pair.name] + '')
-          }
-        })
+      for (let name in this.conditions) {
+        let value = this.model[name]
+        if (value && (value + '').length > 0) {
+          condition += ' and ' + this.conditions[name].replace('{}', this.model[name] + '')
+        }
       }
 
       // 通知外部查询条件变化了

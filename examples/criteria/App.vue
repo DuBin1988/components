@@ -4,30 +4,26 @@
       <span partial>
         <div>
         用户名:
-        <input type="text" v-model="model.userName" v-on:keyup.enter="search" id="userName"
-        condition="username like '%{}%'" defaultvalue="'13'">
+        <input type="text" v-model="model.userName" v-on:keyup.enter="search"
+        condition="username like '%{}%'" default-value="'13'">
         </div>
         <div>
         地址:
-        <input type="text" v-model="model.address" id="address"
-        condition="address = '{}'"
-        defaultvalue="this.model.address.split('').reverse().join('')">
+        <input type="text" v-model="model.address"
+        condition="address = '{}'">
         </div>
         <div>
         密码:
-        <input type="text" v-model="model.password" id="password"
+        <input type="text" v-model="model.password"
         condition="password > '{}'"
-        defaultvalue="Date.now()">
-        </div>
-        <div v-show="model.hasError">
-        {{model.error}}
+        default-value="Date.now()">
         </div>
         <div>
           <button v-on:click="search" >查询</button>
         </div>
       </span>
     </criteria>
-    <p>condition = {{ condition }}</p>
+    <p>condition: {{ condition }}</p>
   </div>
 </template>
 

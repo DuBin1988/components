@@ -27,13 +27,21 @@
 
 ## 查询条件
 
-默认情况下，查询组件自己产生查询条件。如果查询条件比较复杂，客户可以通过回调函数param自己产生查询条件，param函数有两个参数用于产生查询条件：
+默认情况下，查询组件自己产生查询条件。如果查询条件比较复杂，父组件可以自己产生查询条件。办法如下：
 
-* model 存放用户输入的字段内容
-* names 以Json对象方式存放配置的查询条件
+1. 用`v-ref:creteria`为Creteria组件指定名称。
+1. 给父组件添加查询条件的产生函数，比如search。
+1. 添加按钮，该按钮在creteria组件外，按钮上配置`@click='search'`以便调用自己的产生条件的方法。
+1. 在search函数内部，用`this.$refs.creteria`获得查询组件，进一步获得如下产生查询条件所必须的内容：
 
-查询条件的生成结果放置在查询组件的condition属性里，外部可以通过给查询组件指定名称后，以`this.$refs.search.condition`方式获得查询条件
+  * model：存放用户输入的字段内容
+  * conditions： 以Json对象方式存放配置的查询条件
+
+查询条件的生成结果放置在查询组件的condition属性里，外部可以通过给查询组件指定名称后，以`this.$refs.creteria.condition`方式获得查询条件
 
 ## 事件
 
-* condition-changed: 查询条件生成时触发，事件参数为：{ condition:this.condition, model:this.model }，其中，condition指明最终生成的查询条件，model以Json对象方式指明用户输入的内容。
+* condition-changed：  
+查询条件生成时触发，事件参数为：`{ condition:this.condition, model:this.model }`，其中：
+  * condition：最终生成的查询条件
+  * model：以Json对象方式指明用户输入的内容。
