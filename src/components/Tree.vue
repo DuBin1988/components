@@ -20,16 +20,12 @@
 <script>
 import selector from '../mixins/selector'
 import TreeMixin from '../mixins/TreeMixin'
-import { deleteData } from '../api/http'
 
 export default {
   props: ['model'],
   mixins: [selector, TreeMixin],
   methods: {
     del (url, data) {
-      deleteData(url, data, () => {
-        // 父节点重新加载数据
-      })
     }
   }
 }

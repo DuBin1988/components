@@ -4,8 +4,8 @@
     </thead>
     <tbody>
       <tr
-        v-for='data in model'
-        @click="select(data)"
+        v-for='row in model.rows'
+        @click="select(row)"
         a-partial='body'>
       </tr>
     </tbody>
@@ -17,12 +17,7 @@ import selector from '../mixins/selector'
 
 export default {
   props: ['model'],
-  mixins: [selector],
-  methods: {
-    del (url, data) {
-      this.$delete(url, data)
-    }
-  }
+  mixins: [selector]
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <paged-list-with-criteria :model="list">
+  <criteria-paged :model="list">
     <criteria partial='criteria' v-ref:criteria @condition-changed='search'>
       <span partial>
         <div>
@@ -13,7 +13,7 @@
         </div>
       </span>
     </criteria>
-    <data-grid partial='list' :model="model.rows">
+    <data-grid partial='list' :model="model">
       <template partial='head'>
         <tr>
           <th>操作</th>
@@ -21,17 +21,17 @@
         </tr>
       </template>
       <template partial='body'>
-        <td><button v-if='isSelected(data)' @click='del("rs/entity/t_project", data)'>x</button></td>
-        <td>{{data.name}}</td>
+        <td><button v-if='isSelected(row)' @click='remove("rs/entity/t_project", row)'>x</button></td>
+        <td>{{row.name}}</td>
       </template>
     </data-grid>
-  </paged-list-with-criteria>
+  </criteria-paged>
 </template>
 
 <script>
 import Criteria from '../../src/components/Criteria'
 import DataGrid from '../../src/components/DataGrid'
-import PagedListWithCriteria from '../../src/components/PagedListWithCriteria'
+import CriteriaPaged from '../../src/components/CriteriaPaged'
 import PagedList from '../../src/models/PagedList'
 
 export default {
@@ -40,6 +40,6 @@ export default {
       list: new PagedList('/rs/sql/project.sql', 20)
     }
   },
-  components: { Criteria, DataGrid, PagedListWithCriteria }
+  components: { Criteria, DataGrid, CriteriaPaged }
 }
 </script>

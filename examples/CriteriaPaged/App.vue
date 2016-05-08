@@ -2,7 +2,7 @@
   <table>
     <tr valign="top">
       <td>
-        <paged-list-with-criteria :model="model1">
+        <criteria-paged :model="model1">
           <criteria partial='criteria' v-ref:criteria @condition-changed='search'>
             <span partial>
               <div>
@@ -23,10 +23,10 @@
               </tree>
             </template>
           </list>
-        </paged-list-with-criteria>
+        </criteria-paged>
       </td>
       <td>
-        <paged-list-with-criteria  :model="model2"  url="/rs/sql/test.sql" pageSize="30">
+        <criteria-paged :model="model2" url="/rs/sql/test.sql" pageSize="30">
           <criteria partial='criteria' v-ref:criteria @condition-changed='search'>
             <span partial>
               <div>
@@ -50,14 +50,14 @@
               <td >{{data.name}}</td>
             </template>
           </data-grid>
-        </paged-list-with-criteria>
+        </criteria-paged>
       </td>
     </tr>
   </table>
 </template>
 
 <script>
-import PagedListWithCriteria from '../../src/components/PagedListWithCriteria'
+import CriteriaPaged from '../../src/components/CriteriaPaged'
 import Criteria from '../../src/components/Criteria'
 import List from '../../src/components/List'
 import DataGrid from '../../src/components/DataGrid'
@@ -81,6 +81,6 @@ export default {
       model2: new PagedList('/rs/sql/test.sql', 4)
     }
   },
-  components: { PagedListWithCriteria, Criteria, List, DataGrid, Tree }
+  components: { CriteriaPaged, Criteria, List, DataGrid, Tree }
 }
 </script>

@@ -8,9 +8,9 @@
         </tr>
       </template>
       <template partial='body'>
-        <td >{{data.age}}</td>
+        <td >{{row.age}}</td>
       </template>
-      <span partial>{{data.name}}</span>
+      <span partial>{{row.name}}</span>
     </grid-tree>
   </div>
 </template>
@@ -21,30 +21,16 @@ import GridTree from '../../src/components/GridTree'
 export default {
   data () {
     return {
-      model: [{
-        name: '根节点',
-        age: 1,
-        size: 1,
-        children: [{
-          name: '子节点1',
-          age: 2,
-          size: 2,
-          children: [{
-            name: '子节点11',
-            age: 3,
-            size: 0
-          }, {
-            name: '子节点12',
-            age: 4,
-            size: 1,
-            children: [{
-              name: '子节点121',
-              age: 5,
-              size: 0
-            }]
-          }]
-        }]
-      }]
+      model: [
+        {name: '根节点', age: 1, size: 1, children: [
+          {name: '子节点1', age: 2, size: 2, children: [
+            {name: '子节点11', age: 3, size: 0},
+            {name: '子节点12', age: 4, size: 1, children: [
+              {name: '子节点121', age: 5, size: 0}
+            ]}
+          ]}
+        ]}
+      ]
     }
   },
   components: { GridTree }

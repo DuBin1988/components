@@ -1,11 +1,16 @@
 <template>
   <div id='app'>
     <busy :is-busy="isBusy">
-      <span partial>正常组件</span>
+      <span slot='normal'>
+        {{ normalMsg }} - isBusy = {{ isBusy }}
+      </span>
+      <span slot='busy'>
+        {{ busyMsg }} - isBusy = {{ isBusy }}
+      </span>
     </busy>
   </div>
-  <button @click='isBusy = true'>忙</busy>
-  <button @click='isBusy = false'>闲</busy>
+  <button v-if='!isBusy' @click='isBusy = true'>忙</busy>
+  <button v-if='isBusy' @click='isBusy = false'>闲</busy>
 </template>
 
 <script>
@@ -14,7 +19,9 @@ import Busy from '../../src/components/Busy'
 export default {
   data () {
     return {
-      isBusy: false
+      isBusy: false,
+      normalMsg: '测试正常内容',
+      busyMsg: '测试繁忙内容'
     }
   },
   components: { Busy }

@@ -4,13 +4,13 @@
     </thead>
     <tbody>
       <tr
-        v-for='data in model'
-        @click="select(data)"
+        v-for='row in model'
+        @click="select(row)"
         a-partial='body'>
         <td>
-          <span v-for='n of data.level'>&nbsp;</span>
-          <span v-if="isFolder(data)" @click="toggle(data)">
-            <span v-if="data.open">-</span>
+          <span v-for='n of row.level'>&nbsp;</span>
+          <span v-if="isFolder(row)" @click="toggle(row)">
+            <span v-if="row.open">-</span>
             <span v-else>+</span>
           </span>
           <partial name='default'></partial>

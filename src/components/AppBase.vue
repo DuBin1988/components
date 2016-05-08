@@ -13,6 +13,8 @@ import HttpBusy from './HttpBusy'
 import MessageBox from './MessageBox'
 
 export default {
+  data () {
+  },
   components: { HttpBusy, MessageBox }
 }
 </script>

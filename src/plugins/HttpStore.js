@@ -2,17 +2,19 @@ import Vue from 'vue'
 import co from 'co'
 
 // delete执行过程
-let deleteGen = function * (url, data, confirm = true) {
+let deleteGen = function * (url, data, {warn = '删除数据不可恢复，确认删除吗？', ok = '恭喜！删除成功！'} = {}) {
   // 如果需要提醒，显示提醒框
-  if (confirm) {
-    let ret = yield Vue.showMessage('删除数据不可恢复，确认删除吗？', ['confirm', 'cancel'])
-    if (ret === 'cancel') {
-      return
+  let ret = 'confirm'
+  if (warn) {
+    ret = yield Vue.showMessage(warn, ['confirm', 'cancel'])
+  }
+  if (ret === 'confirm') {
+    yield HttpStore.deletePromise(url, data)
+    if (ok) {
+      // 删除成功后，提醒删除成功
+      yield Vue.showMessage(ok)
     }
   }
-  yield HttpStore.deletePromise(url, data)
-  // 删除成功后，提醒删除成功
-  yield Vue.showMessage('恭喜！删除成功！')
 }
 
 let HttpStore = {
