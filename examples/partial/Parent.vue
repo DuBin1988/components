@@ -1,6 +1,6 @@
 <template>
-  <div v-for="data in model">
-    <child>
+  <div v-for="row in model">
+    <child :model='row'>
       <partial name="b" partial='a'>
       </partial>
     </child>

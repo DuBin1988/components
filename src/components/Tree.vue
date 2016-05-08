@@ -23,11 +23,7 @@ import TreeMixin from '../mixins/TreeMixin'
 
 export default {
   props: ['model'],
-  mixins: [Selector, TreeMixin],
-  methods: {
-    del (url, data) {
-    }
-  }
+  mixins: [Selector, TreeMixin]
 }
 </script>
 

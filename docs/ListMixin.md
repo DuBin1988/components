@@ -13,4 +13,4 @@ export default {
 
 ## 方法
 
-* remove(url, row)：从后头删除数据，删除后刷新界面。
+* remove(url, row)：从后台删除数据，删除后刷新界面。

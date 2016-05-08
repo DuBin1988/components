@@ -1,7 +1,7 @@
 <template>
   <span>
     <div>
-      1. <partial name="a"></partial>
+      <partial name="a"></partial>
     </div>
   </span>
 </template>

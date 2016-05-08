@@ -1,7 +1,9 @@
 <template>
   <div id='app'>
     <list :model="model">
-      <span partial>{{row.name}} - {{row.age}}</span>
+      <div partial>
+        <span partial>{{row.name}} - {{row.age}}</span>
+      </div>
     </list>
   </div>
 </template>

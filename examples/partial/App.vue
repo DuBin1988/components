@@ -1,7 +1,7 @@
 <template>
   <div id='app'>
     <parent :model="model">
-      <span partial="b">片段a: {{model.name}}</span>
+      <span partial="b">{{model.name}}</span>
     </parent>
   </div>
 </template>
