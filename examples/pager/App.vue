@@ -1,8 +1,8 @@
 <template>
   <div id='app'>
-    <pager :model="model" :page-size="20" @page-changed='showPage'>
+    <pager :count="count" :page-size="pageSize" @page-changed='showPage'>
     </pager>
-    <input type="text" v-model="model.count"/>
+    <input type="text" v-model="count"/>
     <p>{{ pageSize }}</p>
   </div>
 </template>
@@ -13,10 +13,8 @@ import Pager from '../../src/components/Pager'
 export default {
   data () {
     return {
-      model: {
-        count: 100
-      },
-      pageSize: 0
+      count: 100,
+      pageSize: 20
     }
   },
   methods: {

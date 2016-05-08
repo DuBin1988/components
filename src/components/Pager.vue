@@ -17,14 +17,13 @@ export default {
   },
 
   computed: {
-    // 总页数，根据model中的count计算获得
     totalPage () {
-      return Math.floor((this.model.count - 1) / this.pageSize) + 1
+      return Math.floor((this.count - 1) / this.pageSize) + 1
     }
   },
 
   props: {
-    model: Object,
+    count: 0,
     pageSize: {
       type: Number,
       default: 20
