@@ -4,10 +4,10 @@
 
 ## 用法
 
-在需要选择功能的组件中加入selector混合，如下：
+在需要选择功能的组件中加入Selector混合，如下：
 ```
 export default {
-  mixins: [selector]
+  mixins: [Selector]
 }
 ```
 在模板中需要以不同方式显示当前选中行的地方，用如下表达式：

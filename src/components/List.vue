@@ -1,20 +1,20 @@
 <template>
   <ul>
     <li
-      v-for='data in model'
-      v-bind:class="{ 'selected': isSelected(data) }"
-      @click="select(data)">
+      v-for='row in model.rows'
+      v-bind:class="{ 'selected': isSelected(row) }"
+      @click="select(row)">
       <partial name="default"></partial>
     </li>
   </ul>
 </template>
 
 <script>
-import selector from '../mixins/selector'
+import Selector from '../mixins/Selector'
 
 export default {
   props: ['model'],
-  mixins: [selector]
+  mixins: [Selector]
 }
 </script>
 

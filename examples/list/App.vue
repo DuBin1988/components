@@ -1,7 +1,7 @@
 <template>
   <div id='app'>
     <list :model="model">
-      <span partial>{{data.name}} - {{data.age}}</span>
+      <span partial>{{row.name}} - {{row.age}}</span>
     </list>
   </div>
 </template>
@@ -20,7 +20,9 @@ function fill () {
 export default {
   data () {
     return {
-      model: fill()
+      model: {
+        rows: fill()
+      }
     }
   },
   components: { List }

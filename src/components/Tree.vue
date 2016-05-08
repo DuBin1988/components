@@ -18,12 +18,12 @@
 </template>
 
 <script>
-import selector from '../mixins/selector'
+import Selector from '../mixins/Selector'
 import TreeMixin from '../mixins/TreeMixin'
 
 export default {
   props: ['model'],
-  mixins: [selector, TreeMixin],
+  mixins: [Selector, TreeMixin],
   methods: {
     del (url, data) {
     }

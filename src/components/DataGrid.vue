@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import selector from '../mixins/selector'
+import Selector from '../mixins/Selector'
 
 export default {
   props: ['model'],
-  mixins: [selector]
+  mixins: [Selector]
 }
 </script>
 
