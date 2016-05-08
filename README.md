@@ -68,8 +68,10 @@ examples
 
 * Busy：  
 测试Busy组件。通过按钮，测试Busy状态。
-* HttpBusy:  
-对HttpBusy进行测试，按钮按下后，发送错误请求，在控制台显示请求结果。
+* MessageBox：  
+对MessageBox进行测试，按下确定，或者取消按钮后，显示按下的按钮。
+* HttpStore:  
+对HttpStore进行测试，按钮按下后，发送错误请求，在控制台显示请求结果。
 * AppBase：  
 对AppBase进行测试，发送错误请求，弹出错误对话框。
 * Criteria：  
@@ -82,8 +84,6 @@ examples
 对表格树进行测试，不从后台获取数据，直接显示给定数据。
 * List：  
 对List进行测试，用程序产生10000条数据，测试List组件性能。
-* MessageBox：  
-对MessageBox进行测试，按下确定，或者取消按钮后，在控制台进行显示。
 * Paged：  
 对带查询条件的翻页列表进行测试，从后台获取数据，每条数据可以删除。
 * PagedList：  
