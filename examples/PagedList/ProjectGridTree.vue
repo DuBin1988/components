@@ -1,14 +1,15 @@
 <template>
   <div>
+    GridTree
     <button v-on:click="search()">查询</button>
     <p v-if="model.state === '初始'">点查询按钮，开始查询！</p>
     <p v-if="model.state === '错误'">{{ model.error }}</p>
     <template v-if="model.state === '正确'">
-      <grid-tree :model="model">
+      <grid-tree :model="model.rows">
         <template partial='head'>
           <tr>
-            <th>操作</th>
             <th>姓名</th>
+            <th>操作</th>
           </tr>
         </template>
         <template partial='body'>
@@ -25,7 +26,6 @@
 <script>
 import GridTree from '../../src/components/GridTree'
 import PagedList from '../../src/models/PagedList'
-import TreeNode from '../../src/models/TreeNode'
 
 export default {
   data () {
@@ -33,7 +33,9 @@ export default {
       model: new PagedList('/rs/sql/project.sql', 20, {
         types: {
           default (row) {
-            return new TreeNode(row, '/rs/sql/subproject.sql')
+            row.parent = null
+            row.children = []
+            return row
           }
         }
       })

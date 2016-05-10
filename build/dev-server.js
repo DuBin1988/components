@@ -61,7 +61,7 @@ app.use('/static', express.static('./static'))
 
 app.all('/rs/*', function (req, res) {
   proxy.web(req, res, {
-    target: 'http://localhost:8081'
+    target: 'http://127.0.0.1:8081'
   })
 })
 

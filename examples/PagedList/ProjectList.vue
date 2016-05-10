@@ -1,5 +1,6 @@
 <template>
   <div>
+    List
     <button v-on:click="search()">查询</button>
     <p v-if="model.state === '初始'">点查询按钮，开始查询！</p>
     <p v-if="model.state === '错误'">{{ model.error }}</p>
