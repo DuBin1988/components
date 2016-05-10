@@ -1,15 +1,23 @@
 <template>
   <span>
-    共{{totalPage}}页 当前第{{pageIndex}}页
-    <a href="#" @click="gotoFirst">首页</a>
-    <a href="#" @click="gotoPre">上页</a>
-    <a href="#" @click="gotoNext">下页</a>
-    <a href="#" @click="gotoLast">末页</a>
+    第{{pageIndex}}/{{totalPage}}页 共{{count}}行 每页<input size='4' v-model='pageSize' number>行
+    <a v-if='pageIndex > 1' href="#" @click="gotoFirst">首页</a>
+    <a v-if='pageIndex > 1 ' href="#" @click="gotoPre">上页</a>
+    <a v-if='pageIndex < totalPage' href="#" @click="gotoNext">下页</a>
+    <a v-if='pageIndex < totalPage' href="#" @click="gotoLast">末页</a>
   </span>
 </template>
 
 <script>
 export default {
+  props: {
+    count: 0,
+    pageSize: {
+      type: Number,
+      default: 20
+    }
+  },
+
   data () {
     return {
       pageIndex: 1
@@ -18,15 +26,8 @@ export default {
 
   computed: {
     totalPage () {
-      return Math.floor((this.count - 1) / this.pageSize) + 1
-    }
-  },
-
-  props: {
-    count: 0,
-    pageSize: {
-      type: Number,
-      default: 20
+      let total = Math.floor((this.count - 1) / this.pageSize) + 1
+      return total
     }
   },
 

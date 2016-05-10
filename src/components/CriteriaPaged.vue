@@ -5,7 +5,7 @@
     <p v-if="model.state === '错误'">{{ model.error }}</p>
     <div v-show="model.state === '正确'">
       <partial name="list"></partial>
-      <pager :model="model" @page-changed='loadPage' :page-size='model.pageSize'>
+      <pager v-if='pager' :model="model" @page-changed='loadPage' :count='model.count' :page-size.sync='model.pageSize'>
       </pager>
     </div>
   </div>
@@ -15,7 +15,13 @@
 import Pager from '../../src/components/Pager'
 
 export default {
-  props: ['model'],
+  props: {
+    model: Object,
+    pager: {
+      type: Boolean,
+      default: true
+    }
+  },
   methods: {
     loadPage (pageNo) {
       this.model.loadPage(pageNo)
