@@ -25,6 +25,14 @@ partail中row代表每一行数据。
 
 通常使用PagedList即可，PagedList使用请参考[PageList](PagedList.md)。
 
+## 行数据显示
+
+每行数据用row获得，如上例中的row.name显示每行数据的name属性。
+
+## 方法
+
+- remove(url, row): 删除某行数据，可以在body部分调用此方法删除一行数据。
+
 ## 选择
 
 list支持选择功能，具体参考[Selector](Selector.md)描述。

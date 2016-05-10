@@ -21,11 +21,11 @@ function proc (model, data) {
     // 设置子数据的初始状态为未打开，level为父level + 1
     Vue.set(child, 'open', false)
     child.level = data.level + 1
-    // 展开，添加这个元素, 否则，移走
+    // 展开，添加子, 否则，移走
     if (data.open) {
       model.splice(index + 1, 0, child)
     } else {
-      // 移走元素及其后代
+      // 移走子及其后代
       remove(model, child)
     }
   }
@@ -40,30 +40,51 @@ export default {
     }
   },
   methods: {
-    toggle (data) {
-      if (data.size <= 0) {
-        return
-      }
-
-      data.open = !data.open
-      // 还没有加载子，调用model的加载子的过程
-      if (data.open && data.children.length === 0) {
-        data.loadChild(
-          () => {
-            proc(this.model, data)
-          },
-          () => {
-            data.open = false
-          }
-        )
+    toggle (node, url) {
+      node.open = !node.open
+      // 还没有加载子，调用加载子的过程
+      if (node.open && node.children.length === 0) {
+        this.loadChild(url, node).then(() => {
+          proc(this.model, node)
+        }).catch(() => {
+          node.open = false
+        })
       } else {
-        proc(this.model, data)
+        proc(this.model, node)
       }
     },
+
+    // 看节点是否含子
     isFolder (data) {
       return data.size > 0
     },
-    delete (url, data) {
+
+    // 加载子节点
+    loadChild (url, node) {
+      if (node.loaded) {
+        return
+      }
+
+      // 发送加载数据请求
+      this.$post(url, {id: node.id}, {resoveMsg: null}).then((response) => {
+        // 把数据转换成树节点
+        node.children = Array.from(response.data, (data) => {
+          data.parend = node
+          data.loaded = false
+          data.children = []
+          data.level = node.level + 1
+          data.open = false
+          return data
+        })
+        node.loaded = true
+        this.$set(node, 'state', '成功')
+      }).catch(() => {
+        this.$set(node, 'state', '错误')
+      })
+    },
+
+    // 删除节点
+    remove (url, data) {
       data.delete()
     }
   }

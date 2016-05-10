@@ -9,6 +9,7 @@
         a-partial='body'>
       </tr>
     </tbody>
+    <tr a-partial='foot'></tr>
   </table>
 </template>
 

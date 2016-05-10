@@ -88,9 +88,9 @@ examples
 对表格树进行测试，不从后台获取数据，直接显示给定数据。
 * Pager：  
 对翻页组件进行测试，不从后台获取数据，直接显示给定数据。
+* PagedList：  
+对PagedList模型进行测试，包括与 List, Tree, DataGrid, GridTree 等组件的结合。
 * DataForm：  
 对表单组件进行完整测试，可以把数据提交后台，提交后台的数据可以通过左边的DataGrid进行查询，查询出来的数据，当选中时，可以删除。
-* Paged：  
+* CriteriaPaged：  
 对带查询条件的翻页列表进行测试，从后台获取数据，每条数据可以删除。
-* PagedList：  
-对PagedList模型进行测试。

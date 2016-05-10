@@ -11,6 +11,10 @@
         <td v-bind:class="{ 'selected': isSelected(row) }">{{row.name}}</td>
         <td v-bind:class="{ 'selected': isSelected(row) }">{{row.age}}</td>
       </template>
+      <template partial='foot'>
+        <td>汇总</td>
+        <td>{{ model.sums.age }}</td>
+      </template>
     </data-grid>
   </div>
 </template>
@@ -25,7 +29,8 @@ export default {
         rows: [
           {name: 'abc', age: 10},
           {name: '测试', age: 11}
-        ]
+        ],
+        sums: {count: 2, age: 21}
       }
     }
   },

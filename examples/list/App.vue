@@ -1,9 +1,7 @@
 <template>
   <div id='app'>
     <list :model="model">
-      <div partial>
-        <span partial>{{row.name}} - {{row.age}}</span>
-      </div>
+      <span partial>{{row.name}} - {{row.age}}</span>
     </list>
   </div>
 </template>
@@ -13,7 +11,7 @@ import List from '../../src/components/List'
 
 function fill () {
   let result = []
-  for (let i = 0; i < 10000; i++) {
+  for (let i = 0; i < 100; i++) {
     result.push({ name: '测试', age: 10 })
   }
   return result

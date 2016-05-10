@@ -101,7 +101,6 @@ let HttpStore = {
           method: method
         }).then((response) => {
           // 处理结束，从循环队列里找下一个请求执行
-          console.log(`end: ${JSON.stringify(body)}`)
           this.httpEnd()
           resolve(response)
         }).catch((response) => {

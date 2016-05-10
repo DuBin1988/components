@@ -1,18 +1,18 @@
 <template>
   <ul>
     <li
-      v-for='model in model'
-      @click="select(model)"
+      v-for='row in model'
+      @click="select(row)"
       class="tree"
-      v-bind:class="{ 'selected': isSelected(model) }">
-      <span v-for='n of model.level'>&nbsp;</span>
-      <span v-if="isFolder(model)" @click="toggle(model)">
-        <span v-if="model.open">-</span>
+      v-bind:class="{ 'selected': isSelected(row) }">
+      <span v-for='n of row.level'>&nbsp;</span>
+      <span v-if="isFolder(row)" @click="toggle(row)">
+        <span v-if="row.open">-</span>
         <span v-else>+</span>
       </span>
       <partial name='default'></partial>
-      <span>{{ model.state }}</span>
-      <span v-if='model.state === "错误"'>x</span>
+      <span>{{ row.state }}</span>
+      <span v-if='row.state === "错误"'>x</span>
     </li>
   </ul>
 </template>

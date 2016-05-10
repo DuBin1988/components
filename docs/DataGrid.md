@@ -4,7 +4,7 @@
 
 ## 用法
 
-把数据通过model参数传递给DataGrid组件，表头内容通过名称为head的partial传递给DataGrid组件，每行显示的内容通过名称为body的partial传递给DataGrid组件。
+把数据通过model参数传递给DataGrid组件，表头内容通过名称为head的partial传递给DataGrid组件，每行显示的内容通过名称为body的partial传递给DataGrid组件，汇总信息显示内容通过名称为foot的partial传递给DataGrid组件。
 
 ```html
 <data-grid :model='model'>
@@ -18,6 +18,10 @@
     <td>{{row.name}}</td>
     <td>{{row.age}}</td>
   </template>
+  <template partial='foot'>
+    <td>汇总</td>
+    <td>{{model.sums.age}}</td>
+  </template>
 </data-grid>
 ```
 
@@ -28,6 +32,7 @@
 传递给组件的model必须满足下述要求。
 
 - rows: 数组类型，存放所有数据行。
+- sums：对象类型，存放汇总信息。
 - refresh: 函数，重新进行数据加载。
 
 通常使用PagedList即可，PagedList使用请参考[PageList](PagedList.md)。

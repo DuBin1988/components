@@ -1,7 +1,7 @@
 <template>
   <div>
     <tree :model="model">
-      <span partial>{{model.name}}</span>
+      <span partial>{{row.name}}</span>
     </tree>
   </div>
 </template>
