@@ -6,7 +6,6 @@
 
 * components: 提供的各种组件
 * mixins: 方便调用的混合
-* models: 各类数据模型
 * plugins: 系统提供的插件
 * stores: 特殊的数据存储
 * util: 各类工具
@@ -36,20 +35,16 @@
 * [HttpStore](docs/MessageBox.md)：提供后台http请求功能。
 * [Partial](docs/MessageBox.md)：提供片段支持。
 
-## models
-
-* [PagedList](docs/PagedList.md)：提供分页列表数据处理。
-* [TreeNode](docs/TreeNode.md)：代表一个树节点。
-
 ## 混合
 
 * [Selector](docs/Selector.md)：对选择提供支持。
 * [TreeMixin](docs/TreeMixin.md)：对树的操作提供支持。
-* [ListMixin](docs/ListMixin.md)：对列表中数据处理提供支持。
 
 ## stores
 
 * [SelectStore](docs/Selector.md)：对选中的数据进行存储。
+* [PagedList](docs/PagedList.md)：提供分页列表数据处理。
+* [TreeList](docs/TreeList.md)：提供树数据处理。
 
 ## 测试
 
