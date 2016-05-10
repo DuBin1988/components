@@ -32,7 +32,7 @@
 import Criteria from '../../src/components/Criteria'
 import DataGrid from '../../src/components/DataGrid'
 import CriteriaPaged from '../../src/components/CriteriaPaged'
-import PagedList from '../../src/models/PagedList'
+import PagedList from '../../src/stores/PagedList'
 
 export default {
   data () {

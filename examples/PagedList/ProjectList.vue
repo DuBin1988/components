@@ -17,7 +17,7 @@
 
 <script>
 import List from '../../src/components/List'
-import PagedList from '../../src/models/PagedList'
+import PagedList from '../../src/stores/PagedList'
 
 export default {
   data () {

@@ -62,23 +62,13 @@ import Criteria from '../../src/components/Criteria'
 import List from '../../src/components/List'
 import DataGrid from '../../src/components/DataGrid'
 import Tree from '../../src/components/Tree'
-import PagedList from '../../src/models/PagedList'
-import TreeNode from '../../src/models/TreeNode'
+import TreeList from '../../src/stores/TreeList'
 
 export default {
   data () {
     return {
-      model1: new PagedList('/rs/sql/project.sql', 2, {
-        params: {
-          name: 'this.model.userName'
-        },
-        types: {
-          default (row) {
-            return new TreeNode(row, '/rs/sql/subproject.sql')
-          }
-        }
-      }),
-      model2: new PagedList('/rs/sql/test.sql', 4)
+      model1: new TreeList('/rs/sql/project.sql'),
+      model2: new TreeList('/rs/sql/test.sql', 4)
     }
   },
   components: { CriteriaPaged, Criteria, List, DataGrid, Tree }

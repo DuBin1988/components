@@ -25,7 +25,7 @@
 
 <script>
 import DataGrid from '../../src/components/DataGrid'
-import PagedList from '../../src/models/PagedList'
+import PagedList from '../../src/stores/PagedList'
 
 export default {
   data () {
