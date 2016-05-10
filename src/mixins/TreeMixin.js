@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import TreeList from '../stores/TreeList'
 
-// 移走自己及后代
-function remove (array, data) {
+// 关闭自己及后代
+function close (array, data) {
   // 移走自己
   array.$remove(data)
   if (!data.children) {
@@ -11,7 +11,24 @@ function remove (array, data) {
 
   // 对子进行递归调用
   for (let child of data.children) {
-    remove(array, child)
+    close(array, child)
+  }
+}
+
+// 展开自己及后代
+function open (array, data, index) {
+  array.splice(index + 1, 0, data)
+
+  // 如果data为未展开或者没有子，直接返回
+  if (!data.open || !data.children) {
+    return
+  }
+
+  // 如果data的为展开，继续处理其子
+  index = array.indexOf(data)
+  for (let child of data.children) {
+    open(array, child, index)
+    index++
   }
 }
 
@@ -19,15 +36,19 @@ function remove (array, data) {
 function proc (model, data) {
   let index = model.indexOf(data)
   for (let child of data.children) {
-    // 设置子数据的初始状态为未打开，level为父level + 1
-    Vue.set(child, 'open', false)
+    // 如果子节点展开状态未知，默认设置为false
+    if (child.open === undefined) {
+      Vue.set(child, 'open', false)
+    }
+    // 设置level为父level + 1
     child.level = data.level + 1
     // 展开，添加子, 否则，移走
     if (data.open) {
-      model.splice(index + 1, 0, child)
+      open(model, child, index)
+      index++
     } else {
-      // 移走子及其后代
-      remove(model, child)
+      // 关闭子及其后代
+      close(model, child)
     }
   }
 }
