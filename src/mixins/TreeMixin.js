@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import TreeList from '../stores/TreeList'
+import co from 'co'
 
 // 关闭自己及后代
 function close (array, data) {
@@ -34,36 +35,45 @@ function open (array, data, index) {
 
 // 依据data状态，对数据进行处理
 function proc (model, data) {
-  let index = model.indexOf(data)
-  for (let child of data.children) {
-    // 如果子节点展开状态未知，默认设置为false
-    if (child.open === undefined) {
-      Vue.set(child, 'open', false)
-    }
-    // 设置level为父level + 1
-    child.level = data.level + 1
-    // 展开，添加子, 否则，移走
-    if (data.open) {
+  // 展开，添加子, 否则，移走
+  if (data.open) {
+    let index = model.indexOf(data)
+    for (let child of data.children) {
       open(model, child, index)
       index++
-    } else {
+    }
+  } else {
+    for (let child of data.children) {
       // 关闭子及其后代
       close(model, child)
     }
   }
 }
 
+// toggle方法的general函数
+let toggleGen = function * (row, comp) {
+  row.open = !row.open
+  // 还没有加载子，调用加载子的过程
+  if (row.open && row.children.length === 0) {
+    yield comp.loadChild(row)
+  }
+  // 把数据转换成树节点
+  TreeList.toTreeNode(row.children, row, row.level + 1)
+  proc(comp.model, row)
+}
+
 export default {
-  props: ['url'],
+  props: ['url', 'model'],
+  created () {
+    // 如果开始有数据，把数据转换成树节点
+    if (this.model && this.model.length > 0) {
+      TreeList.toTreeNode(this.model)
+    }
+  },
   methods: {
     toggle (node) {
-      node.open = !node.open
-      // 还没有加载子，调用加载子的过程
-      if (node.open && node.children.length === 0) {
-        this.loadChild(node)
-      } else {
-        proc(this.model, node)
-      }
+      let gen = toggleGen(node, this)
+      return co(gen)
     },
 
     // 看节点是否含子
@@ -73,27 +83,24 @@ export default {
 
     // 加载子节点
     loadChild (node) {
-      if (node.loaded) {
-        return
-      }
-
-      // 发送加载数据请求
-      this.$post(
-        this.url,
-        {id: node.id},
-        {resolveMsg: null}
-      ).then((response) => {
-        // 把数据转换成树节点
-        node.children = Array.from(response.data, (row) => {
-          return TreeList.toTreeNode(row, node, node.level + 1)
+      return new Promise((resolve, reject) => {
+        if (node.loaded) {
+          return
+        }
+        // 发送加载数据请求
+        this.$post(
+          this.url,
+          {id: node.id},
+          {resolveMsg: null}
+        ).then((response) => {
+          node.children = response.data
+          node.loaded = true
+          Vue.set(node, 'state', '成功')
+          resolve()
+        }).catch(() => {
+          node.open = false
+          Vue.set(node, 'state', '错误')
         })
-        // 把加载到的节点数据放到列表里
-        proc(this.model, node)
-        node.loaded = true
-        Vue.set(node, 'state', '成功')
-      }).catch(() => {
-        node.open = false
-        Vue.set(node, 'state', '错误')
       })
     },
 

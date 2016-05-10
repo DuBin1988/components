@@ -11,7 +11,6 @@
         <span v-else>+</span>
       </span>
       <partial name='default'></partial>
-      <span>{{ row.state }}</span>
       <span v-if='row.state === "错误"'>x</span>
     </li>
   </ul>
@@ -22,7 +21,6 @@ import Selector from '../mixins/Selector'
 import TreeMixin from '../mixins/TreeMixin'
 
 export default {
-  props: ['model'],
   mixins: [Selector, TreeMixin]
 }
 </script>
