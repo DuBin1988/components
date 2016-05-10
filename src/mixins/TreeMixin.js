@@ -70,7 +70,7 @@ export default {
       ).then((response) => {
         // 把数据转换成树节点
         node.children = Array.from(response.data, (data) => {
-          data.parend = node
+          data.parent = node
           data.loaded = false
           data.children = []
           data.level = node.level + 1
@@ -88,8 +88,17 @@ export default {
     },
 
     // 删除节点
-    remove (url, data) {
-      data.delete()
+    remove (url, node) {
+      Vue.delete(url, node).then(() => {
+        // 从model移除
+        this.model.$remove(node)
+        // 如果有父，从父中移除
+        if (node.parent) {
+          node.parent.children.$remove(node)
+          // 纠正父节点size
+          node.parent.size = node.parent.children.length
+        }
+      })
     }
   }
 }

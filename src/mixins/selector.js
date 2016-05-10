@@ -19,8 +19,14 @@ export default {
   },
   methods: {
     select (data) {
-      if (this.selectMode !== 'none') {
+      if (this.selectMode !== 'none' && this.selectStore.selected !== data) {
+        let oldVal = this.selectStore.selected
         this.selectStore.select(data)
+        // 发送选择项变化消息
+        this.$dispatch('select-changed', {
+          val: this.selectStore.selected,
+          oldVal: oldVal
+        })
       }
     },
     isSelected (data) {

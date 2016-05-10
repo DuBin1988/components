@@ -63,6 +63,10 @@ selectMode包括none及single。如果将多个支持选择功能的组件进行
 ```
 通过将list的selectMode设置为none，屏蔽list的选择功能。选择内容由树节点提供。
 
+## 事件
+
+- select-changed：选择内容发生变化了，参数为一个对象 {val: newVal, oldVal: oldVal}
+
 ## selectStore
 
 * selected：当前选中项
