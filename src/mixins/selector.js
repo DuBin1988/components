@@ -14,7 +14,8 @@ export default {
   },
   computed: {
     selected () {
-      return this.selectStore.selected
+      let selected = this.selectStore.selected
+      return selected
     }
   },
   methods: {

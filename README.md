@@ -86,6 +86,6 @@ examples
 * PagedList：  
 对PagedList模型进行测试，包括与 List, Tree, DataGrid, GridTree 等组件的结合。
 * CriteriaPaged：  
-对带查询条件的翻页列表进行测试，从后台获取数据，每条数据可以删除。列表部分包括：List, Tree, DataGrid, GridTree 
+对带查询条件的翻页列表进行测试，从后台获取数据，每条数据可以删除。列表部分包括：List, Tree, DataGrid, GridTree
 * DataForm：  
-对表单组件进行完整测试，可以把数据提交后台，提交后台的数据可以通过左边的DataGrid进行查询，查询出来的数据，当选中时，可以删除。
+对表单组件进行完整测试，可以把数据提交后台，提交后台的数据可以通过左边的查询分页组件进行查询，查询出来的数据，当选中时，可以删除。左边查询分页组件支持：DataGrid, GridTree。不同查询组件放在tab页中。

@@ -8,7 +8,7 @@
         <input type="text" v-model="model.name">
         </div>
         <div>
-          <button @click="post('/rs/entity/t_project')" >保存</button>
+          <button @click="post('/rs/entity/t_project')">保存</button>
         </div>
       </div>
     </data-form>
@@ -32,7 +32,7 @@
 import DataForm from '../../src/components/DataForm'
 
 export default {
-  props: ['parentid'],
+  props: ['parent'],
   data () {
     return {
       subForm: {
@@ -45,8 +45,9 @@ export default {
     }
   },
   watch: {
-    'parentid': function (val, oldVal) {
-      this.subForm.parentid = val
+    'parent': function (val, oldVal) {
+      let parentid = val ? val.id : null
+      this.subForm.parentid = parentid
     }
   },
   methods: {

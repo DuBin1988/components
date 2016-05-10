@@ -1,16 +1,47 @@
 <template>
   <div id='app'>
     <app-base>
-      <project partial></project>
+      <table>
+        <tr>
+          <td>
+            <tabset>
+              <tab header="ProjectGridTree">
+                <project-grid-tree :select-store='selectStore'></project-grid-tree>
+              </tab>
+              <tab header="ProjectGrid">
+                <project-grid></project-grid>
+              </tab>
+            <tabset>
+          </td>
+          <td>
+            <project-form :parent='selectStore.selected'></project-form>
+          </td>
+        </tr>
+      </table>
     </app-base>
   </div>
 </template>
 
 <script>
 import AppBase from '../../src/components/AppBase'
-import Project from './Project'
+import SelectStore from '../../src/stores/SelectStore'
+import ProjectGrid from './ProjectGrid'
+import ProjectGridTree from './ProjectGridTree'
+import ProjectForm from './ProjectForm'
+import Tabset from 'vue-strap/src/Tabset'
+import Tab from 'vue-strap/src/Tab'
 
 export default {
-  components: { AppBase, Project }
+  data () {
+    return {
+      selectStore: new SelectStore()
+    }
+  },
+  methods: {
+    test () {
+      console.log(this.$refs.list)
+    }
+  },
+  components: { AppBase, ProjectGrid, ProjectGridTree, ProjectForm, Tab, Tabset }
 }
 </script>
