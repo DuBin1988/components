@@ -133,4 +133,13 @@ export default class PagedList {
       }
     }
   }
+
+  // 从后台删除数据，删除后，刷新界面
+  remove (url, data) {
+    Vue.delete(url, data).then(
+      () => {
+        this.refresh()
+      }
+    )
+  }
 }

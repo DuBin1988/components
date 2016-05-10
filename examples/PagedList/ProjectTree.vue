@@ -5,7 +5,7 @@
     <p v-if="model.state === '初始'">点查询按钮，开始查询！</p>
     <p v-if="model.state === '错误'">{{ model.error }}</p>
     <template v-if="model.state === '正确'">
-      <tree :model="model.rows">
+      <tree :model="model.rows" url='rs/sql/subproject.sql'>
         <span partial>
           {{ row.name }}
           <button v-if='isSelected(row)' @click='remove("rs/entity/t_project", row)'>x</button>

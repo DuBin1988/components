@@ -25,3 +25,6 @@ new PagedList(url, pageSize, options)
   * model：由用户输入的查询内容。
 - loadPage (pageNo): 加载一页数据，调用该方法前，请确保已调用search函数。参数说明
   * pageNo: 页号
+- remove (url, data)：删除后台数据，删除后，刷新界面
+  * url：删除数据的url
+  * data：要删除的数据

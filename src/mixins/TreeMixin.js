@@ -32,6 +32,7 @@ function proc (model, data) {
 }
 
 export default {
+  props: ['url'],
   created () {
     // 给model中的数据设置open为false, level为0
     for (let data of this.model) {
@@ -40,15 +41,11 @@ export default {
     }
   },
   methods: {
-    toggle (node, url) {
+    toggle (node) {
       node.open = !node.open
       // 还没有加载子，调用加载子的过程
       if (node.open && node.children.length === 0) {
-        this.loadChild(url, node).then(() => {
-          proc(this.model, node)
-        }).catch(() => {
-          node.open = false
-        })
+        this.loadChild(node)
       } else {
         proc(this.model, node)
       }
@@ -60,13 +57,17 @@ export default {
     },
 
     // 加载子节点
-    loadChild (url, node) {
+    loadChild (node) {
       if (node.loaded) {
         return
       }
 
       // 发送加载数据请求
-      this.$post(url, {id: node.id}, {resoveMsg: null}).then((response) => {
+      this.$post(
+        this.url,
+        {id: node.id},
+        {resolveMsg: null}
+      ).then((response) => {
         // 把数据转换成树节点
         node.children = Array.from(response.data, (data) => {
           data.parend = node
@@ -76,10 +77,13 @@ export default {
           data.open = false
           return data
         })
+        // 把加载到的节点数据放到列表里
+        proc(this.model, node)
         node.loaded = true
-        this.$set(node, 'state', '成功')
+        Vue.set(node, 'state', '成功')
       }).catch(() => {
-        this.$set(node, 'state', '错误')
+        node.open = false
+        Vue.set(node, 'state', '错误')
       })
     },
 

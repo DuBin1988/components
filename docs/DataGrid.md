@@ -41,9 +41,13 @@
 
 每行数据用row获得，如上例中的row.name显示每行数据的name属性。
 
-## 方法
+## 删除数据
 
-- remove(url, row): 删除某行数据，可以在body部分调用此方法删除一行数据。
+如果要删除数据，必须使用PagedList作为模型，在删除数据的按钮上，调用model的remove方法，如下：
+```
+model.remove(url, row)
+```
+将url替换成要删除数据的地址即可。
 
 ## 选择
 

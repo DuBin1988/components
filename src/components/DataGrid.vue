@@ -15,11 +15,10 @@
 
 <script>
 import Selector from '../mixins/Selector'
-import ListMixin from '../mixins/ListMixin'
 
 export default {
   props: ['model'],
-  mixins: [Selector, ListMixin]
+  mixins: [Selector]
 }
 </script>
 

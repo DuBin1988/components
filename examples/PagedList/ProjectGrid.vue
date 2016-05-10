@@ -14,7 +14,7 @@
         </template>
         <template partial='body'>
           <td v-bind:class="{ 'selected': isSelected(row) }">
-            <button v-if='isSelected(row)' @click='remove("rs/entity/t_project", row)'>x</button>
+            <button v-if='isSelected(row)' @click='model.remove("rs/entity/t_project", row)'>x</button>
           </td>
           <td v-bind:class="{ 'selected': isSelected(row) }">{{row.name}}</td>
         </template>

@@ -4,11 +4,11 @@
 
 ## 用法
 
-把数据通过model参数传递给tree组件，树节点显示的内容通过partial传递给tree组件。
+把数据通过model参数传递给tree组件，树节点显示的内容通过partial传递给tree组件，加载子节点的服务路径通过url参数传递给组件。
 ```html
 <template>
   <div>
-    <tree :model='model'>
+    <tree :model='model' url='rs/sql/subproject.sql'>
       <div partial>{{row.name}}</div>
     </tree>
   </div>

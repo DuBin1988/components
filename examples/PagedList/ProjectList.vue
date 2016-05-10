@@ -8,7 +8,7 @@
       <list :model="model">
         <span partial>
           {{ row.name }}
-          <button v-if='isSelected(row)' @click='remove("rs/entity/t_project", row)'>x</button>
+          <button v-if='isSelected(row)' @click='model.remove("rs/entity/t_project", row)'>x</button>
         </span>
       </list>
     </template>

@@ -4,10 +4,10 @@
 
 ## 用法
 
-用model参数传递数据，partial='head'指明表头，partial='body'指明表体，默认partial指明树节点显示内容。
+用model参数传递数据，partial='head'指明表头，partial='body'指明表体，默认partial指明树节点显示内容，加载子节点的服务路径通过url参数传递给组件。
 
 ```html
-<grid-tree :model='model'>
+<grid-tree :model='model' url='rs/sql/subproject.sql'>
   <template partial='head'>
     <tr>
       <th>姓名</th>

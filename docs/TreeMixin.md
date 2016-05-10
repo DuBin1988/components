@@ -15,4 +15,4 @@ export default {
 
 * toggle(node)：切换树节点的展开状态。
 * isFolder(node)：看节点是否有子。
-* delete(url, node)：调用url中的服务删除节点，删除后，自动刷新界面。
+* remove(url, node)：调用url中的服务删除节点，删除后，自动刷新界面。
