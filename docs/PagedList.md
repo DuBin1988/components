@@ -16,7 +16,8 @@ new PagedList(url, pageSize, options)
 
 - count: 符合条件的数据总数
 - rows: 加载过来的数据
-- state: 状态，字符串型，包括：初始(默认)，查询，错误，正确
+- state: 状态，字符串型，包括：初始(默认)，错误，正确
+- error：出现错误时的内容
 
 ## 方法
 

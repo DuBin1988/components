@@ -25,24 +25,16 @@
 
 <script>
 import GridTree from '../../src/components/GridTree'
-import PagedList from '../../src/models/PagedList'
+import TreeList from '../../src/stores/TreeList'
 
 export default {
   data () {
     return {
-      model: new PagedList('/rs/sql/project.sql', 20, {
-        types: {
-          default (row) {
-            row.parent = null
-            row.children = []
-            return row
-          }
-        }
-      })
+      model: new TreeList('/rs/sql/project.sql')
     }
   },
   methods: {
-    search (args) {
+    search () {
       this.model.search('1=1', {})
     }
   },

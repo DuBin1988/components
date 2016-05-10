@@ -22,7 +22,7 @@ export default {
   data () {
     return {
       model: [
-        {name: '根节点', age: 1, size: 1, children: [
+        {name: '根节点', age: 1, size: 1, level: 0, open: false, children: [
           {name: '子节点1', age: 2, size: 2, children: [
             {name: '子节点11', age: 3, size: 0},
             {name: '子节点12', age: 4, size: 1, children: [

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import TreeList from '../stores/TreeList'
 
 // 移走自己及后代
 function remove (array, data) {
@@ -33,13 +34,6 @@ function proc (model, data) {
 
 export default {
   props: ['url'],
-  created () {
-    // 给model中的数据设置open为false, level为0
-    for (let data of this.model) {
-      Vue.set(data, 'open', false)
-      data.level = 0
-    }
-  },
   methods: {
     toggle (node) {
       node.open = !node.open
@@ -69,13 +63,8 @@ export default {
         {resolveMsg: null}
       ).then((response) => {
         // 把数据转换成树节点
-        node.children = Array.from(response.data, (data) => {
-          data.parent = node
-          data.loaded = false
-          data.children = []
-          data.level = node.level + 1
-          data.open = false
-          return data
+        node.children = Array.from(response.data, (row) => {
+          return TreeList.toTreeNode(row, node, node.level + 1)
         })
         // 把加载到的节点数据放到列表里
         proc(this.model, node)

@@ -23,12 +23,12 @@ partail中row代表树的每一个节点。
 * children：数组，代表所有子节点
 * size：整形，代表子节点个数。对异步数据，在没有加载所有子节点前，需要把子节点个数先加载过来，以便确定该节点是否叶子节点。
 
-model例子如下：
+第一级节点必须指明level为0，open为false。一般情况下，使用TreeList不需要指明这些内容。model例子如下：
 ```
 data () {
   return {
     model: [
-      {name: '根节点', size: 1, children: [
+      {name: '根节点', size: 1, level: 0, open: false, children: [
         {name: '子节点', size: 0}
       ]}
     ]  

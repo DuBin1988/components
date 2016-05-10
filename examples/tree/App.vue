@@ -15,6 +15,8 @@ export default {
       model: [{
         name: '根节点',
         size: 1,
+        level: 0,
+        open: false,
         children: [{
           name: '子节点1',
           size: 2,

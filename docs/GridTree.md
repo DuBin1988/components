@@ -24,15 +24,15 @@
 
 ## 数据格式
 
-传递给组件的每行数据均应满足树状数据格式要求。例如：
+传递给组件的每行数据均应满足树状数据格式要求。第一级节点必须指明level为0，open为false。一般情况下，使用TreeList不需要指明这些内容。例如：
 ```
 data () {
   return {
     model: [
-      {name: '根节点', size: 1, children: [
-        { name: '子节点', size: 0 }
+      {name: '根节点', size: 1, level: 0, open: false, children: [
+        {name: '子节点', size: 0}
       ]}
-    ]
+    ]  
   }
 }
 ```
