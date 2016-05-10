@@ -4,6 +4,7 @@ import VueResource from 'vue-resource'
 import Partial from '../src/plugins/Partial'
 import MessageBox from '../src/plugins/MessageBox'
 import HttpStore from '../src/plugins/HttpStore'
+import VueValidator from 'vue-validator'
 
 require('bootstrap.css')
 
@@ -14,4 +15,5 @@ export default function () {
   Vue.mixin(Partial)
   Vue.use(MessageBox)
   Vue.use(HttpStore)
+  Vue.use(VueValidator)
 }

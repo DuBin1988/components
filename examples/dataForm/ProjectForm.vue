@@ -1,36 +1,35 @@
 <template>
   <div>
     添加子 父节点id：{{subForm.parentid}}
-    <data-form :model='subForm'>
-      <div partial>
+    <validator name='vSub'>
+      <form novalidate>
         <div>
-        用户名:
-        <input type="text" v-model="model.name">
+          用户名:
+          <input type="text" v-model="subForm.name" v-validate:name='{ required: true }'>
+          <span v-if="$vSub.name.required">不能为空</span>
         </div>
         <div>
-          <button @click="post('/rs/entity/t_project')">保存</button>
+          <button v-if='$vSub.valid' @click="$post('/rs/entity/t_project', subForm)">保存</button>
         </div>
-      </div>
-    </data-form>
+      </form>
+    </validator>
     添加根
-    <data-form :model='form'>
-      <div partial>
+    <validator name='v'>
+      <form novalidate>
         <div>
-        用户名:
-        <input type="text" v-model="model.name">
+          用户名:
+          <input type="text" v-model="form.name" v-validate:name='{ required: true }'>
+          <span v-if="$v.name.required">不能为空</span>
         </div>
         <div>
-          <button @click="post('/rs/entity/t_project')" >保存</button>
-          <button @click='$parent.test'>测试父组件</button>
+          <button v-if='$v.valid' @click="$post('/rs/entity/t_project', form)" >保存</button>
         </div>
-      </div>
-    </data-form>
+    </form>
+  </validator>
   </dv>
 </template>
 
 <script>
-import DataForm from '../../src/components/DataForm'
-
 export default {
   props: ['parent'],
   data () {
@@ -49,12 +48,6 @@ export default {
       let parentid = val ? val.id : null
       this.subForm.parentid = parentid
     }
-  },
-  methods: {
-    test () {
-      console.log('父组件')
-    }
-  },
-  components: { DataForm }
+  }
 }
 </script>

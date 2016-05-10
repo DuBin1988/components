@@ -26,7 +26,6 @@
 * [Tree](docs/Tree.md)：显示树状列表的组件。
 * [GridTree](docs/GridTree.md)：表格树组件。
 * [Pager](docs/Pager.md)：翻页组件。
-* [DataForm](docs/Pager.md)：数据表单组件。
 * [CriteriaPaged](docs/CriteriaPaged.md)：复合组件，带查询条件的翻页显示数据组件。
 
 ## 插件
@@ -87,5 +86,10 @@ examples
 对PagedList模型进行测试，包括与 List, Tree, DataGrid, GridTree 等组件的结合。
 * CriteriaPaged：  
 对带查询条件的翻页列表进行测试，从后台获取数据，每条数据可以删除。列表部分包括：List, Tree, DataGrid, GridTree
-* DataForm：  
-对表单组件进行完整测试，可以把数据提交后台，提交后台的数据可以通过左边的查询分页组件进行查询，查询出来的数据，当选中时，可以删除。左边查询分页组件支持：DataGrid, GridTree。不同查询组件放在tab页中。
+* DataForm：对表单进行完整测试，表单不需要组件。内容有：
+  - 可以把数据提交后台，提交后台的数据可以通过左边的查询分页组件进行查询。
+  - 查询出来的数据，当选中时，可以删除。
+  - 左边查询分页组件支持：DataGrid, GridTree。不同查询组件放在tab页中。
+  - 表单组件的输入数据可以进行校验。
+  - 可以输入日期等类型数据。
+  - 可以进行路由。

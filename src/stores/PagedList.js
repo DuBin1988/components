@@ -78,12 +78,13 @@ export default class PagedList {
     ).then(
       (response) => {
         this.state = '正确'
-        this.rows = Array.from(response.data, (row) => this.from(row))
+        this.rows = response.data
       }
     ).catch(
-      () => {
+      (error) => {
         this.state = '错误'
         this.error = '提取数据出错，请重试'
+        throw error
       }
     )
   }
