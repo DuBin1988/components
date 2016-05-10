@@ -4,24 +4,17 @@ export default class PagedList {
   // 用url及pageSize构造
   // url - 加载数据的url
   // pageSize - 每页数据个数
-  // options 说明：
-  //   params - 除正常查询条件外，附加到后台sql中的参数，可以为空。格式为:{参数名:参数值}
-  //   types - 后台转换过来的数据，所需要进行的处理工作
-  constructor (url, pageSize, options) {
+  // params - 除正常查询条件外，附加到后台sql中的参数，可以为空。格式为:{参数名:参数值}
+  constructor (url, pageSize, params) {
     this.url = url
     this.pageSize = pageSize
 
     // 登记参数源码，查询前，执行参数源码，获得实际参数值
-    if (options && options.params) {
-      this.paramSource = options.params
+    if (params) {
+      this.paramSource = params
     }
     // 查询时，提交后台的参数值
     this.params = {}
-
-    // 登记后台类型转换函数，根据后台类型转换函数把取到的数据进行转换
-    if (options && options.types) {
-      this.types = options.types
-    }
 
     // 符合条件的数据总数
     this.count = 0
@@ -106,31 +99,6 @@ export default class PagedList {
       /*eslint-disable */
       this.params[name] = eval(this.paramSource[name])
       /*eslint-enable */
-    }
-  }
-
-  // 把取到的数据进行转换
-  from (row) {
-    // 如果没有配置转换函数，直接返回
-    if (!this.types) {
-      return row
-    }
-    // 如果返回数据没有type，配置默认转换，调用默认的，没有，直接返回
-    if (!row.type) {
-      if (this.types.default) {
-        return this.types.default(row)
-      } else {
-        return row
-      }
-    } else {
-      // 如果返回数据有type, 配置中有函数，调用，没有，有默认的，调用默认的，还没有，直接返回
-      if (this.types[row.type]) {
-        return this.types[row.type](row)
-      } else if (this.types.default) {
-        return this.types.default(row)
-      } else {
-        return row
-      }
     }
   }
 
