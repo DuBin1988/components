@@ -6,8 +6,6 @@ import MessageBox from '../src/plugins/MessageBox'
 import HttpStore from '../src/plugins/HttpStore'
 import VueValidator from 'vue-validator'
 
-require('bootstrap.css')
-
 export default function () {
   Vue.config.debug = true
   Vue.use(Vuex)
