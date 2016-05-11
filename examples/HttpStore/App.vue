@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     post (url, options) {
-      this.$post(url, {}, options).then(
+      this.$post(url, {condition: '1=1'}, options).then(
         (response) => {
           this.rows.push(`发送成功: ${JSON.stringify(response.data)}`)
         }

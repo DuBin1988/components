@@ -6,16 +6,15 @@ let MessageBox = {
     Vue.showMessage = Vue.prototype.$showMessage = function (msg, buttons = ['confirm']) {
       return new Promise((resolve) => {
         MessageBox.msg = msg
-        // 清空按钮处理函数
-        MessageBox.bConfirm = null
-        MessageBox.bCancel = null
         // 要显示的按钮解析
         MessageBox.confirmShow = false
         MessageBox.cancelShow = false
         for (let bName of buttons) {
           MessageBox[`${bName}Show`] = true
         }
-        MessageBox.show = true
+        setTimeout(() => {
+          MessageBox.show = true
+        }, 300)
         MessageBox.resolve = resolve
       })
     }
@@ -24,18 +23,6 @@ let MessageBox = {
     Vue.closeMessage = Vue.prototype.$closeMessage = function () {
       MessageBox.show = false
     }
-  },
-
-  // 添加确认按钮处理函数
-  confirm (bConfirm) {
-    this.bConfirm = bConfirm
-    return MessageBox
-  },
-
-  // 添加取消按钮的处理函数
-  cancel (bCancel) {
-    this.bCancel = bCancel
-    return MessageBox
   }
 }
 

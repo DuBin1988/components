@@ -5,10 +5,10 @@
         <div class="row">
           <div class="col-md-6">
             <tabset>
-              <tab header="ProjectGridTree">
+              <tab header="项目树">
                 <project-grid-tree :select-store='selectStore'></project-grid-tree>
               </tab>
-              <tab header="ProjectGrid">
+              <tab header="项目表">
                 <project-grid></project-grid>
               </tab>
             <tabset>

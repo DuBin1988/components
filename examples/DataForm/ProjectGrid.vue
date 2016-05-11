@@ -7,9 +7,7 @@
           用户名:
           <input type="text" v-model="model.name" v-on:keyup.enter="search"
           condition="name like '{}%'" defaultvalue="'13'">
-          </div>
-          <div>
-            <button v-on:click="search()">查询</button>
+          <button v-on:click="search()">查询</button>
           </div>
         </span>
       </criteria>
