@@ -11,7 +11,7 @@
               <tab header="项目表">
                 <project-grid></project-grid>
               </tab>
-            <tabset>
+            </tabset>
           </div>
           <div class="col-md-6">
             <project-form :parent='selectStore.selected'></project-form>
