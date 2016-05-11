@@ -10,7 +10,6 @@
         <button v-show="msg.confirmShow" type="button" class="btn btn-success" @click='confirm'>确认</button>
       </div>
     </modal>
-    msg: {{ msg.show}}, model：{{ $refs.modal.show }}
   </div>
 </template>
 
