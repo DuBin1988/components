@@ -1,7 +1,7 @@
 import List from './components/List.vue'
 import Tree from './components/Tree.vue'
 
-import selector from './mixins/selector'
+import Selector from './mixins/Selector'
 import SelectStore from './stores/SelectStore'
 
 import all from './all'
@@ -9,7 +9,7 @@ import all from './all'
 export {
   List,
   Tree,
-  selector,
+  Selector,
   SelectStore,
   all
 }
