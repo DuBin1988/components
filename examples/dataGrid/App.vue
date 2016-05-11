@@ -8,8 +8,8 @@
         </tr>
       </template>
       <template partial='body'>
-        <td v-bind:class="{ 'selected': isSelected(row) }">{{row.name}}</td>
-        <td v-bind:class="{ 'selected': isSelected(row) }">{{row.age}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.age}}</td>
       </template>
       <template partial='foot'>
         <td>汇总</td>

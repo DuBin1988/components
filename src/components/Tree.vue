@@ -1,11 +1,11 @@
 <template>
-  <ul>
+  <ul class="list-unstyled">
     <li
       v-for='row in model'
       @click="select(row)"
       class="tree"
-      v-bind:class="{ 'selected': isSelected(row) }">
-      <span v-for='n of row.level'>&nbsp;</span>
+      v-bind:class="{ 'bg-success': isSelected(row) }">
+      <span v-for='n of row.level'>&nbsp;&nbsp;</span>
       <span v-if="isFolder(row)" @click="toggle(row)">
         <span v-if="row.open">-</span>
         <span v-else>+</span>
@@ -24,17 +24,3 @@ export default {
   mixins: [Selector, TreeMixin]
 }
 </script>
-
-<style>
-.selected {
-  background-color: yellow
-}
-.tree {
-  cursor: pointer;
-}
-ul {
-  padding-left: 1em;
-  line-height: 1.5em;
-  list-style-type: none;
-}
-</style>

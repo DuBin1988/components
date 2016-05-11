@@ -1,9 +1,9 @@
 <template>
   <div id='app'>
     <app-base>
-      <table>
-        <tr>
-          <td>
+      <div class='container-fluid'>
+        <div class="row">
+          <div class="col-md-6">
             <tabset>
               <tab header="ProjectGridTree">
                 <project-grid-tree :select-store='selectStore'></project-grid-tree>
@@ -12,12 +12,12 @@
                 <project-grid></project-grid>
               </tab>
             <tabset>
-          </td>
-          <td>
+          </div>
+          <div class="col-md-6">
             <project-form :parent='selectStore.selected'></project-form>
-          </td>
-        </tr>
-      </table>
+          </div>
+        </div>
+      </div>
     </app-base>
   </div>
 </template>

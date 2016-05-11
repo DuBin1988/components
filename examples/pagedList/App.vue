@@ -1,26 +1,24 @@
 <template>
-  <div id='app'>
-    <app-base>
-      <table>
-        <tr>
-          <td>
-            <project-list></project-list>
-          </td>
-          <td>
-            <project-grid></project-grid>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <project-tree></project-tree>
-          </td>
-          <td>
-            <project-grid-tree></project-grid-tree>
-          </td>
-        </tr>
-      <table>
-    </app-base>
-  </div>
+  <app-base>
+    <div class='container-fluid'>
+      <div class="row">
+        <div class="col-md-6">
+          <project-list></project-list>
+        </div>
+        <div class="col-md-6">
+          <project-grid></project-grid>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <project-tree></project-tree>
+        </div>
+        <div class="col-md-6">
+          <project-grid-tree></project-grid-tree>
+        </div>
+      </div>
+    </div>
+  </app-base>
 </template>
 
 <script>

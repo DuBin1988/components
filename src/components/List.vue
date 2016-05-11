@@ -1,8 +1,8 @@
 <template>
-  <ul>
+  <ul class="list-unstyled">
     <li
       v-for='row in model.rows'
-      v-bind:class="{ 'selected': isSelected(row) }"
+      v-bind:class="{ 'bg-success': isSelected(row) }"
       @click="select(row)">
       <partial name="default"></partial>
     </li>
@@ -17,9 +17,3 @@ export default {
   mixins: [Selector]
 }
 </script>
-
-<style>
-.selected {
-  background-color: yellow
-}
-</style>
