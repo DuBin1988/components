@@ -1,7 +1,11 @@
 <template>
-  <div id='busy'>
-    <slot name='busy' v-show='isBusy'></slot>
-    <slot name='normal' v-show="!isBusy"></slot>
+  <div id='busy' class="full">
+    <div v-show='isBusy'>
+      <slot name='busy'></slot>
+    </div>
+    <div v-show="!isBusy" class="full">
+      <slot name='normal'></slot>
+    </div>
   </div>
 </template>
 

@@ -1,8 +1,10 @@
 <template>
-  <busy :is-busy='http.isBusy'>
-    <slot slot='normal'></slot>
-    <p slot='busy'>正在等待服务器返回结果，请耐心等候！</p>
-  </busy>
+  <div id='http-busy' class='full'>
+    <busy :is-busy='http.isBusy'>
+      <slot slot='normal'></slot>
+      <p slot='busy'>正在等待服务器返回结果，请耐心等候！</p>
+    </busy>
+  </div>
 </template>
 
 <script>

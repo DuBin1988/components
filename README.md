@@ -2,6 +2,11 @@
 
 提供组件制作基础及部分通用组件。所有组件已经进行了全局注册，可直接使用。
 
+## 第三方插件
+
+* vue-strap：由于需要对vue-strap进行修改，在项目根目录下，引入了vue-strap内容，方便修改，修改后的vue-strap文件，不用发布，直接复制到OA等工程目录下。
+* bootstrap：bootstrap源码，测试例子需要这些源码。OA等工程包含这些源码，不用复制。
+
 ## 目录结构
 
 * components: 提供的各种组件
@@ -13,7 +18,14 @@
 ## 全局内容
 
 * [all](docs/all.md)：完成vue所有初始化工作。
-* index.js：用于把相关类对外公布，除组件及插件外，其余的都进行公布。
+* index.js：用于把相关模块对外公布，使用时，用`import { 模块名 } from 'vue-client'`即可引入。公布的模块有：
+  - Selector
+  - TreeMixin
+  - PagedList
+  - SelectStore
+  - TreeList
+  - all
+* client.less：自己扩充的基础样式，将复制到OA等项目中，all里已经引入。
 
 ## 组件
 
@@ -92,3 +104,4 @@ examples
   - 查询出来的数据，当选中时，可以删除。
   - 左边查询分页组件支持：DataGrid, GridTree。不同查询组件放在tab页中。
   - 表单组件的输入数据可以进行校验。
+* Layout：对基于弹性盒模型的布局进行测试。

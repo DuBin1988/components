@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
 import VueResource from 'vue-resource'
-import Partial from '../src/plugins/Partial'
-import MessageBoxPlugin from '../src/plugins/MessageBox'
+import Partial from './plugins/Partial'
+import MessageBoxPlugin from './plugins/MessageBox'
 import HttpStore from '../src/plugins/HttpStore'
+
 import VueValidator from 'vue-validator'
 
 // 引入所有组件
@@ -18,6 +20,8 @@ import List from './components/List'
 import MessageBox from './components/MessageBox'
 import Pager from './components/Pager'
 import Tree from './components/Tree'
+
+require('./client.less')
 
 export default function () {
   Vue.config.debug = true
