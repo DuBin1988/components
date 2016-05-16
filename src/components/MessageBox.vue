@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { modal } from 'vue-strap'
+import Modal from 'vue-strap/src/modal'
 import MessageBox from '../plugins/MessageBox'
 
 export default {
@@ -40,6 +40,6 @@ export default {
       MessageBox.resolve('cancel')
     }
   },
-  components: { modal }
+  components: { Modal }
 }
 </script>
