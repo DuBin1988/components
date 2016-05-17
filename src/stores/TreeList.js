@@ -34,13 +34,16 @@ export default class TreeList {
   // condition - 查询组件产生的查询条件
   // model - 查询组件收集到的输入数据
   search (condition, model) {
-    // 保存条件，以便加载某页时可以直接调用
+    // 保存条件，以便刷新时可以直接调用
+    this.condition = condition
+    this.model = model
+
     let params = Object.assign({}, model, {
       condition: condition
     })
 
     // 发生请求时，不进行任何提醒
-    Vue.post(this.url, params, {resolveMsg: null, rejectMsg: null}).then(
+    return Vue.post(this.url, params, {resolveMsg: null, rejectMsg: null}).then(
       (response) => {
         if (response.data.length === 0) {
           this.state = '错误'
@@ -58,5 +61,10 @@ export default class TreeList {
         this.error = '提取数据出错，请重试'
       }
     )
+  }
+
+  // 重新进行查询
+  refresh () {
+    return this.search(this.condition, this.model)
   }
 }

@@ -115,6 +115,10 @@ export default {
           // 纠正父节点size
           node.parent.size = node.parent.children.length
         }
+        // 删除以后，当前选中项变空
+        if (this.select) {
+          this.select(null)
+        }
       })
     }
   }

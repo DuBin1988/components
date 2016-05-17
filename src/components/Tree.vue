@@ -1,10 +1,10 @@
 <template>
-  <ul class="list-unstyled">
-    <li
+  <div class="list-group">
+    <a href="#"
       v-for='row in model'
       @click="select(row)"
-      class="tree"
-      v-bind:class="{ 'bg-success': isSelected(row) }">
+      class="list-group-item"
+      v-bind:class="{ 'active': isSelected(row) }">
       <span v-for='n of row.level'>&nbsp;&nbsp;</span>
       <span v-if="isFolder(row)" @click="toggle(row)">
         <span v-if="row.open">-</span>
@@ -12,8 +12,8 @@
       </span>
       <partial name='default'></partial>
       <span v-if='row.state === "错误"'>x</span>
-    </li>
-  </ul>
+    </a>
+  </div>
 </template>
 
 <script>
