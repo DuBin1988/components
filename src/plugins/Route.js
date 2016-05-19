@@ -1,7 +1,10 @@
 export default {
   methods: {
-    $route (comp) {
-      this.$dispatch('route', comp)
+    $route (name, comp, props = {}) {
+      this.$dispatch('route', name, comp, props)
+    },
+    $back (comp) {
+      this.$dispatch('back')
     }
   }
 }
