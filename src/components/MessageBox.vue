@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div class='auto'>
     <modal :show.sync="msg.show" v-ref:modal>
-      <div slot="modal-header" class="modal-header">
+      <header slot="modal-header" class="modal-header">
         <h4 class="modal-title">提醒</h4>
-      </div>
-      <div slot="modal-body" class="modal-body"> {{ msg.msg }} </div>
-      <div slot="modal-footer" class="modal-footer">
+      </header>
+      <article slot="modal-body" class="modal-body"> {{ msg.msg }} </article>
+      <footer slot="modal-footer" class="modal-footer">
         <button v-show="msg.cancelShow" type="button" class="btn btn-default" @click='close'>取消</button>
         <button v-show="msg.confirmShow" type="button" class="btn btn-success" @click='confirm'>确认</button>
-      </div>
+      </footer>
     </modal>
   </div>
 </template>

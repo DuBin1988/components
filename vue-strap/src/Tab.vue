@@ -1,5 +1,5 @@
 <template>
-  <div role="tabpanel" class="tab-pane full"
+  <div id='tab' class="tab-pane full"
       v-bind:class="{hide:!show}"
       v-show="show"
       :transition="transition"

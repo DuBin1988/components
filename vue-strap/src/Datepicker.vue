@@ -1,41 +1,42 @@
 <template>
-  <div class="datepicker">
+  <div class="datepicker auto">
     <input class="form-control datepicker-input" type="text"
     v-bind:style="{width:width}"
     @click="inputClick"
     v-model="value"/>
-      <div class="datepicker-popup" v-show="displayDayView">
-          <div class="datepicker-inner">
-              <div class="datepicker-body">
-                  <div class="datepicker-ctrl">
+      <div class="datepicker-popup auto" v-show="displayDayView">
+          <div class="datepicker-inner auto">
+              <div class="datepicker-body auto">
+                  <div class="datepicker-ctrl auto">
                       <span class="month-btn datepicker-preBtn" @click="preNextMonthClick(0)">&lt;</span>
                       <span class="month-btn datepicker-nextBtn" @click="preNextMonthClick(1)">&gt;</span>
                       <p @click="switchMouthView">
                       {{stringifyDayHeader(currDate)}}
                       </p>
                   </div>
-                  <div class="datepicker-weekRange">
+                  <div class="datepicker-weekRange auto">
                       <span v-for="w in weekRange">{{w}}</span>
                   </div>
-                  <div class="datepicker-dateRange">
+                  <div class="datepicker-dateRange auto">
                       <span v-for="d in dateRange" v-bind:class="d.sclass" @click="daySelect(d.date,this)">{{d.text}}</span>
                   </div>
               </div>
           </div>
       </div>
-      <div class="datepicker-popup" v-show="displayMouthView">
-        <div class="datepicker-inner">
-            <div class="datepicker-body">
-                <div class="datepicker-ctrl">
+      <div class="datepicker-popup auto" v-show="displayMouthView">
+        <div class="datepicker-inner auto">
+            <div class="datepicker-body auto">
+                <div class="datepicker-ctrl auto">
                     <span class="month-btn datepicker-preBtn" @click="preNextYearClick(0)">&lt;</span>
                     <span class="month-btn datepicker-nextBtn" @click="preNextYearClick(1)">&gt;</span>
                     <p @click="switchDecadeView">
                     {{stringifyYearHeader(currDate)}}
                     </p>
                 </div>
-                <div class="datepicker-mouthRange">
+                <div class="datepicker-mouthRange auto">
                 	<template v-for="m in mouthNames">
 	                    <span   v-bind:class="{'datepicker-dateRange-item-active':
+                          this.value &&
 			                    (this.mouthNames[this.parse(this.value).getMonth()]  === m) &&
 			                    this.currDate.getFullYear() === this.parse(this.value).getFullYear()}"
 			                    @click="mouthSelect($index)"
@@ -47,19 +48,20 @@
             </div>
         </div>
       </div>
-      <div class="datepicker-popup" v-show="displayYearView">
-        <div class="datepicker-inner">
-            <div class="datepicker-body">
-                <div class="datepicker-ctrl">
+      <div class="datepicker-popup auto" v-show="displayYearView">
+        <div class="datepicker-inner auto">
+            <div class="datepicker-body auto">
+                <div class="datepicker-ctrl auto">
                     <span class="month-btn datepicker-preBtn" @click="preNextDecadeClick(0)">&lt;</span>
                     <span class="month-btn datepicker-nextBtn" @click="preNextDecadeClick(1)">&gt;</span>
                     <p>
                     {{stringifyDecadeHeader(currDate)}}
                     </p>
                 </div>
-                <div class="datepicker-mouthRange decadeRange">
+                <div class="datepicker-mouthRange decadeRange auto">
                 	<template v-for="decade in decadeRange">
                 		<span v-bind:class="{'datepicker-dateRange-item-active':
+                        this.value &&
 		                    this.parse(this.value).getFullYear() === decade.text}"
 	                    @click.stop="yearSelect(decade.text)">
 	                      {{decade.text}}

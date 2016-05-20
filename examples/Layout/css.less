@@ -1,0 +1,23 @@
+@charset "utf-8";
+html,body{ padding:0; margin:0; height:100%; overflow:hidden;}
+*{ font-family:"微软雅黑", "宋体", Arial;}
+
+div.main {display: -webkit-flex; -webkit-flex-direction: column; height:100%;}
+header.col1{ background:#efefef; font-size:14px; padding:0px;}
+article.col2{-webkit-flex:1;display: -webkit-flex; -webkit-flex-direction: column; height:100%; padding:0px; background: #efefef;}
+footer.col3{ background:#000; color:white; height:30px; text-align:center; font-size:12px; line-height:30px;}
+
+article.col2 div.submain{display: -webkit-flex; -webkit-flex-direction: row; height:100%; margin:0px; width:100%;}
+article.col2 Aside.subcol1{ width:360px; background:#D8E1F0; border-top: solid 3px  #54BCAE; height:100%;display: -webkit-flex; -webkit-flex-direction: column;}
+article.col2 article.subcol2{-webkit-flex:1; background:#fff; border-top: solid 3px  #54BCAE; height:100%;display: -webkit-flex; -webkit-flex-direction: column;}
+
+
+article.col2 Aside.subcol1 header.find{}
+article.col2 Aside.subcol1 article.datalist{-webkit-flex:1; height:100%; overflow:auto;}
+article.col2 Aside.subcol1 footer.space{ height:52px;}
+
+article.col2 article.subcol2 header.find{}
+article.col2 article.subcol2 article.datalist{-webkit-flex:1; height:100%; overflow:auto;}
+article.col2 article.subcol2 footer.space{ height:52px;}
+
+

@@ -4,6 +4,7 @@ import App from './App'
 
 // 调用全局配置
 all()
+require('./css.less')
 
 /* eslint-disable no-new */
 new Vue({

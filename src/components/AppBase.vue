@@ -13,8 +13,6 @@ import MessageBox from './MessageBox'
 import $ from 'jquery'
 
 export default {
-  data () {
-  },
   ready () {
     setInterval(() => {
       for (let e of $('.span', this.$el)) {

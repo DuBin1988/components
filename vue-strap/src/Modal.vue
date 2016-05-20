@@ -1,5 +1,5 @@
 <template>
-  <div role="dialog"
+  <div role="dialog" class='auto'
     v-bind:class="{
     'modal':true,
     'fade':effect === 'fade',
@@ -7,10 +7,10 @@
     }"
     >
     <div v-bind:class="{'modal-dialog':true,'modal-lg':large,'modal-sm':small}" role="document"
-      v-bind:style="{width: optionalWidth}">
-      <div class="modal-content">
+      v-bind:style="{width: optionalWidth}" class='auto'>
+      <div class="modal-content auto">
         <slot name="modal-header">
-          <div class="modal-header">
+          <div class="modal-header auto">
             <button type="button" class="close" @click="close"><span>&times;</span></button>
             <h4 class="modal-title" >{{title}}</h4>
           </div>
@@ -19,7 +19,7 @@
           <div class="modal-body"></div>
         </slot>
         <slot name="modal-footer">
-          <div class="modal-footer">
+          <div class="modal-footer auto">
             <button type="button" class="btn btn-default" @click="close">Close</button>
             <button type="button" class="btn btn-primary" @click="callback">Save changes</button>
           </div>

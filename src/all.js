@@ -6,7 +6,7 @@ import Partial from './plugins/Partial'
 import MessageBoxPlugin from './plugins/MessageBox'
 import HttpStore from '../src/plugins/HttpStore'
 import State from '../src/plugins/State'
-import Route from '../src/plugins/Route'
+import RoutePlugin from '../src/plugins/Route'
 
 import VueValidator from 'vue-validator'
 
@@ -22,6 +22,7 @@ import List from './components/List'
 import MessageBox from './components/MessageBox'
 import Pager from './components/Pager'
 import Tree from './components/Tree'
+import Route from './components/Route'
 
 require('./client.less')
 
@@ -31,7 +32,7 @@ export default function () {
   Vue.use(VueResource)
   Vue.mixin(Partial)
   Vue.mixin(State)
-  Vue.mixin(Route)
+  Vue.mixin(RoutePlugin)
   Vue.use(MessageBoxPlugin)
   Vue.use(HttpStore)
   Vue.use(VueValidator)
@@ -48,4 +49,5 @@ export default function () {
   Vue.component('message-box', MessageBox)
   Vue.component('pager', Pager)
   Vue.component('tree', Tree)
+  Vue.component('route', Route)
 }
