@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  title: 'bar编辑',
   methods: {
     test () {
       this.$back()

@@ -23,6 +23,7 @@ import MessageBox from './components/MessageBox'
 import Pager from './components/Pager'
 import Tree from './components/Tree'
 import Route from './components/Route'
+import Dynamic from './components/Dynamic'
 
 require('./client.less')
 
@@ -50,4 +51,5 @@ export default function () {
   Vue.component('pager', Pager)
   Vue.component('tree', Tree)
   Vue.component('route', Route)
+  Vue.component('dynamic', Dynamic)
 }

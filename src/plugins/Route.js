@@ -1,9 +1,9 @@
 export default {
   methods: {
-    $route (name, comp, props = {}) {
-      this.$dispatch('route', name, comp, props)
+    $route (name, props = {}, self = true) {
+      this.$dispatch('route', name, props, self)
     },
-    $back (comp) {
+    $back () {
       this.$dispatch('back')
     }
   }

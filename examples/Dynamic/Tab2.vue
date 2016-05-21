@@ -7,5 +7,6 @@
 
 <script>
 export default {
+  title: '标签2'
 }
 </script>

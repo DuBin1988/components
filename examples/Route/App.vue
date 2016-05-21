@@ -1,18 +1,14 @@
 <template>
   <div>
-    <route v-ref:route></route>
+    <button @click="$refs.route.comp = {name: 'bar'}">跳转</button>
+    <route :comp="{name: 'foo'}" v-ref:route></route>
   </div>
 </template>
 
 <script>
 import Route from '../../src/components/Route'
-import Foo from './Foo'
-import Bar from './Bar'
 
 export default {
-  ready () {
-    this.$refs.route.route('Foo', 'foo', {})
-  },
-  components: { Route, Foo, Bar }
+  components: { Route }
 }
 </script>

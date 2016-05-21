@@ -8,9 +8,10 @@
 
 <script>
 export default {
+  title: 'foo编辑',
   methods: {
     test () {
-      this.$route('bar', 'bar')
+      this.$route('bar')
     }
   }
 }
