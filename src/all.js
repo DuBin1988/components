@@ -25,6 +25,11 @@ import Tree from './components/Tree'
 import Route from './components/Route'
 import Dynamic from './components/Dynamic'
 
+// 引入vue-strap组件
+import Tabset from './vue-strap/src/Tabset'
+import Tab from './vue-strap/src/Tab'
+import Modal from './vue-strap/src/Modal'
+
 require('./client.less')
 
 export default function () {
@@ -52,4 +57,9 @@ export default function () {
   Vue.component('tree', Tree)
   Vue.component('route', Route)
   Vue.component('dynamic', Dynamic)
+
+  // 注册vue-strap组件
+  Vue.component('tabset', Tabset)
+  Vue.component('tab', Tab)
+  Vue.component('modal', Modal)
 }

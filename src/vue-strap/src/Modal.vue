@@ -1,5 +1,5 @@
 <template>
-  <div role="dialog" class='auto'
+  <div role="dialog"
     v-bind:class="{
     'modal':true,
     'fade':effect === 'fade',
@@ -7,21 +7,25 @@
     }"
     >
     <div v-bind:class="{'modal-dialog':true,'modal-lg':large,'modal-sm':small}" role="document"
-      v-bind:style="{width: optionalWidth}" class='auto'>
-      <div class="modal-content auto">
+      v-bind:style="{width: optionalWidth}">
+      <div class="modal-content">
         <slot name="modal-header">
-          <div class="modal-header auto">
+          <div class="modal-header">
             <button type="button" class="close" @click="close"><span>&times;</span></button>
-            <h4 class="modal-title" >{{title}}</h4>
+            <h4 class="modal-title" > 
+              <slot name="title">
+                {{title}}
+              </slot>
+            </h4>
           </div>
         </slot>
         <slot name="modal-body">
           <div class="modal-body"></div>
         </slot>
         <slot name="modal-footer">
-          <div class="modal-footer auto">
-            <button type="button" class="btn btn-default" @click="close">Close</button>
-            <button type="button" class="btn btn-primary" @click="callback">Save changes</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" @click="close">{{ cancelText }}</button>
+            <button type="button" class="btn btn-primary" @click="callback">{{ okText }}</button>
           </div>
         </slot>
       </div>
@@ -32,9 +36,18 @@
 <script>
 import getScrollBarWidth from './utils/getScrollBarWidth.js'
 import EventListener from './utils/EventListener.js'
+import coerceBoolean from './utils/coerceBoolean.js'
 
   export default {
     props: {
+      okText: {
+        type: String,
+        default: 'Save changes'
+      },
+      cancelText:{
+        type: String,
+        default: 'Close'
+      },
       title: {
         type: String,
         default: ''
@@ -42,6 +55,7 @@ import EventListener from './utils/EventListener.js'
       show: {
         require: true,
         type: Boolean,
+        coerce: coerceBoolean,
         twoWay: true
       },
       width: {
@@ -57,14 +71,17 @@ import EventListener from './utils/EventListener.js'
       },
       backdrop: {
         type: Boolean,
+        coerce: coerceBoolean,
         default: true
       },
       large: {
         type: Boolean,
+        coerce: coerceBoolean,
         default: false
       },
       small: {
         type: Boolean,
+        coerce: coerceBoolean,
         default: false
       }
     },
