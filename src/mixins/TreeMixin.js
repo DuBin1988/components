@@ -106,7 +106,7 @@ export default {
 
     // 删除节点
     remove (url, node) {
-      Vue.delete(url, node).then(() => {
+      Vue.remove(url, node).then(() => {
         // 从model移除
         this.model.$remove(node)
         // 如果有父，从父中移除

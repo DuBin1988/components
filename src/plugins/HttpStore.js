@@ -48,13 +48,14 @@ let HttpStore = {
       return co(gen)
     }
 
-    // 给Vue增添delete方法
-    Vue.delete = Vue.prototype.$delete = function (url, data,
+    // 给Vue增添remove方法
+    Vue.remove = Vue.prototype.$remove = function (url, data,
     {
       warnMsg = '删除数据不可恢复，确认删除吗？',
       resolveMsg = '恭喜！删除成功！',
       rejectMsg = '删除失败：'
     } = {}) {
+      console.log('delete：', url)
       let gen = postGen('DELETE', `${url}/${data.id}`, {}, {warnMsg, resolveMsg, rejectMsg})
       return co(gen)
     }
