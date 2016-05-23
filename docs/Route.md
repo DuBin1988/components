@@ -51,9 +51,7 @@ export default {
 
 所有需要进行异步加载的组件，在应用main函数里进行注册。注册代码如下：
 ```
-Vue.component('async-webpack-example', function (resolve) {
-  require(['./my-async-component'], resolve)
-})
+Vue.component('tab1', (resolve) => { require(['./Tab1'], resolve) })
 ```
 
 ## 参数

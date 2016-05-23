@@ -8,11 +8,11 @@
     >
     <div v-bind:class="{'modal-dialog':true,'modal-lg':large,'modal-sm':small}" role="document"
       v-bind:style="{width: optionalWidth}">
-      <div class="modal-content">
+      <div class="modal-content auto">
         <slot name="modal-header">
           <div class="modal-header">
             <button type="button" class="close" @click="close"><span>&times;</span></button>
-            <h4 class="modal-title" > 
+            <h4 class="modal-title" >
               <slot name="title">
                 {{title}}
               </slot>

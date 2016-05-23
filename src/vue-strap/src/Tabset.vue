@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <!--flex-->
+  <div class='flex'>
+    <!--head-->
     <!-- Nav tabs -->
      <ul class="nav nav-{{navStyle}}" role="tablist">
             <li
@@ -18,11 +20,11 @@
                 </a>
             </li>
      </ul>
-
-     <!-- Tab panes -->
-     <div class="tab-content" v-el:tab-content>
-        <slot></slot>
-     </div>
+    <!--main-->
+    <!-- Tab panes -->
+    <div class="tab-content span" v-el:tab-content>
+       <slot></slot>
+    </div>
   </div>
 </template>
 

@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+- Tabset改flex布局
+- Modal的dev加auto class
+
 ## 1.1.0 - 2016-05-22
 ### Added
 - Route: 路由组件，组件可以在路由组件内进行路由。
