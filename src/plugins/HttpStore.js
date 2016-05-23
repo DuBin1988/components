@@ -44,6 +44,7 @@ let HttpStore = {
       resolveMsg = '恭喜！提交成功！',
       rejectMsg = '提交错误！'
     } = {}) {
+      console.log('post：', url)
       let gen = postGen('POST', url, data, {warnMsg, resolveMsg, rejectMsg})
       return co(gen)
     }

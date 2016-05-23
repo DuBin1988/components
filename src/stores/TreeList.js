@@ -1,25 +1,29 @@
 import Vue from 'vue'
 
 export default class TreeList {
-    // 把一批数据转换成树节点
+    // 把一批数据转换成树节点, 数据放到节点的data里
   static toTreeNode (rows, parent = null, level = 0) {
-    for (let row of rows) {
-      Object.assign(row, {
+    return Array.from(rows, (row) => {
+      let newRow = {
+        data: row,      // 原来的数据转换到data里
         loaded: false,  // 是否已加载
         parent: parent, // 父节点
-        level: level    // 展开层级
-      })
+        level: level,   // 展开层级
+        size: row.size, // 子的个数
+        id: row.id      // id号
+      }
       // 如果还没有子节点，设置成空
-      if (!row.children) {
-        row.children = []
+      if (!newRow.children) {
+        newRow.children = []
       }
       // 如果子节点展开状态未知，默认设置为false
-      if (row.open === undefined) {
-        Vue.set(row, 'open', false)
+      if (newRow.open === undefined) {
+        Vue.set(newRow, 'open', false)
       }
       // 节点加载状态，包括：初始，正确，错误三种
-      Vue.set(row, 'state', '初始')
-    }
+      Vue.set(newRow, 'state', '初始')
+      return newRow
+    })
   }
 
   constructor (url) {
@@ -53,7 +57,7 @@ export default class TreeList {
         this.state = '正确'
         // 把查询到的数据转换成树节点
         this.rows = response.data
-        TreeList.toTreeNode(this.rows)
+        this.rows = TreeList.toTreeNode(this.rows)
       }
     ).catch(
       () => {

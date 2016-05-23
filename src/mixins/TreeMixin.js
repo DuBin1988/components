@@ -56,9 +56,9 @@ let toggleGen = function * (row, comp) {
   // 还没有加载子，调用加载子的过程
   if (row.open && row.children.length === 0) {
     yield comp.loadChild(row)
+    // 把数据转换成树节点
+    row.children = TreeList.toTreeNode(row.children, row, row.level + 1)
   }
-  // 把数据转换成树节点
-  TreeList.toTreeNode(row.children, row, row.level + 1)
   proc(comp.model, row)
 }
 
@@ -67,7 +67,7 @@ export default {
   created () {
     // 如果开始有数据，把数据转换成树节点
     if (this.model && this.model.length > 0) {
-      TreeList.toTreeNode(this.model)
+      this.model = TreeList.toTreeNode(this.model)
     }
   },
   methods: {
