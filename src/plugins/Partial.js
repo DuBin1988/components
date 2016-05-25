@@ -38,7 +38,8 @@ export default {
     $('[a-partial]', this.$el).each((i, el) => {
       let name = el.getAttribute('a-partial')
       if (partials[name]) {
-        el.innerHTML += partials[name].innerHTML
+        let str = partials[name].innerHTML
+        el.innerHTML += str
       } else if (this.$parent && this.$parent.$options.partials && this.$parent.$options.partials[name]) {
         el.innerHTML += this.$parent.$options.partials[name].innerHTML
       }

@@ -1,16 +1,25 @@
 <template>
-  <div v-for="row in model">
-    <child :model='row'>
-      <partial name="b" partial='a'>
-      </partial>
-    </child>
+  <div id='app' class='auto'>
+    <test-table>
+      <div partial='head'>
+      <span a-tr>
+        <span a-td>
+          a
+        </span>
+        <span a-td>
+          b
+        </span>
+      </span>
+      </div>
+    </test-table>
   </div>
 </template>
 
 <script>
-import Child from './Child'
+import TestTable from './TestTable'
+
 export default {
-  props: [ 'model' ],
-  components: { Child }
+  title: 'parent',
+  components: { TestTable }
 }
 </script>

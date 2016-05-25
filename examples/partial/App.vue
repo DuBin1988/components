@@ -1,15 +1,17 @@
 <template>
   <div id='app'>
-    <parent :model="model">
-      <span partial="b">{{model.name}}</span>
-    </parent>
+    <child></child>
+    <parent></parent>
+    <!--route :comp='{name: "parent"}'></route-->
   </div>
 </template>
 
 <script>
 import Parent from './Parent'
+import Child from './Child'
 
 export default {
+  title: 'App',
   data () {
     return {
       model: [
@@ -17,6 +19,6 @@ export default {
       ]
     }
   },
-  components: { Parent }
+  components: { Parent, Child }
 }
 </script>

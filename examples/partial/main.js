@@ -7,6 +7,7 @@ all()
 
 /* eslint-disable no-new */
 new Vue({
+  titile: 'Root',
   el: 'body',
   components: { App }
 })

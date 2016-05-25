@@ -11,7 +11,7 @@
 
 在组件内部，通过路由函数进行路由，如下：
 ```
-this.$route(name)
+this.$goto(name)
 ```
 参数说明：
 
@@ -25,14 +25,14 @@ this.$route(name)
 
 在路由时，可以给组件提供参数，如下：
 ```
-this.$route(name, {msg: 'message'})
+this.$goto(name, {msg: 'message'})
 ```
 
 ### 路由页签
 
 在路由时，可指明是否在本页签路由。如果不在本页签路由，将寻找所有打开的页签，看是否有已经存在的组件。如果没有，则打开新页签。
 ```
-this.$route(name, props, self)
+this.$goto(name, props, self)
 ```
 self为boolean值，指明是否本页签，默认为true，表示在本页签下路由。
 
@@ -60,7 +60,7 @@ Vue.component('tab1', (resolve) => { require(['./Tab1'], resolve) })
 ```html
 <route :comp={name:name, props:props}></route>
 ```
-- index：指明路由组件的在tab页中的索引，处理route-init事件时要用。
+- index：指明路由组件的在tab页中的索引，处理route-init事件时要用。如果不会在不同页签路由，可以不传该参数。
 
 ## 事件
 

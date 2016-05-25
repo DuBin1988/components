@@ -16,7 +16,7 @@ export default {
     done()
   },
   methods: {
-    $route (name, props = {}, self = true) {
+    $goto (name, props = {}, self = true) {
       this.$dispatch('route', name, props, self)
     },
     $back () {

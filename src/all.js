@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
 
 import VueResource from 'vue-resource'
 import Partial from './plugins/Partial'
@@ -34,7 +33,6 @@ require('./client.less')
 
 export default function () {
   Vue.config.debug = true
-  Vue.use(Vuex)
   Vue.use(VueResource)
   Vue.mixin(Partial)
   Vue.mixin(State)
