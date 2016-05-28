@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+## V1.1.1 - 2016-05-28 @何宁社
+### Fixed
 - Tabset改flex布局
 - Modal的dev加auto class
 - httpstore的vue.delete函数与vue重名了，改成remove了

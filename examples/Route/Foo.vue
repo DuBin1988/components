@@ -8,10 +8,10 @@
 
 <script>
 export default {
-  title: 'foo编辑',
+  title: 'foo组件',
   methods: {
     test () {
-      this.$route('bar')
+      this.$goto('bar')
     }
   }
 }

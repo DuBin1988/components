@@ -3,9 +3,9 @@ export default {
     // 父为路由组件，组件切换进来时，获取标题，把标题设置到路由组件的标题，同时把参数传递给切换进来的组件
     if (this.$parent && this.$parent.$options.name === 'route') {
       let title = this.$options.title
-      if (!title) {
-        let err = `组件缺少title：${this.$options.name}`
-        throw err
+      if (process.env.NODE_ENV !== 'production' && !title) {
+        let error = `组件缺少title：${this.$options.name}`
+        throw error
       }
       this.$parent.setTitle(title)
 

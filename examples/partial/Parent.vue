@@ -19,7 +19,6 @@
 import TestTable from './TestTable'
 
 export default {
-  title: 'parent',
   components: { TestTable }
 }
 </script>
