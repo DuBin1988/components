@@ -54,7 +54,7 @@ function proc (model, data) {
 let toggleGen = function * (row, comp) {
   row.open = !row.open
   // 还没有加载子，调用加载子的过程
-  if (row.open && row.children.length === 0) {
+  if (row.open && !row.loaded) {
     yield comp.loadChild(row)
     // 把数据转换成树节点
     row.children = TreeList.toTreeNode(row.children, row, row.level + 1)
@@ -84,9 +84,13 @@ export default {
     // 加载子节点
     loadChild (node) {
       return new Promise((resolve, reject) => {
-        if (node.loaded) {
+        // 如果不需要从后台获取数据，直接返回。适用于开始已经给定数据的场合。
+        if (node.children.length !== 0) {
+          node.loaded = true
+          resolve()
           return
         }
+
         // 发送加载数据请求
         this.$post(
           this.url,

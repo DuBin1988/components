@@ -1,13 +1,13 @@
 <template>
   <div id='app' class='auto'>
     <test-table>
-      <div partial='head'>
-      <span a-tr>
-        <span a-td>
+      <template partial='head'>
+        <tr>
+          <td>
           a
-        </span>
-      </span>
-      </div>
+          </td>
+        </tr>
+      </template>
     </test-table>
   </div>
 </template>

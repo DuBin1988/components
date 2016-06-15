@@ -13,6 +13,7 @@
   * warnMsg：发送前的提醒信息，默认为空，即不提醒
   * resolveMsg：提交成功后的提醒信息，为空不提醒
   * rejectMsg：提交失败后的提醒信息，为空不提醒
+
 * $delete(url, data, {warnMsg = '删除数据不可恢复，确认删除吗？', resolveMsg = '恭喜！删除成功！', rejectMsg = '删除失败：'}):  
 以delete方式发送数据，返回一个Promise，发送后的后续处理，用then方式进行。
   * url：删除数据的url

@@ -1,5 +1,5 @@
 <template>
-  <div id='app'>
+  <div id='app' class='auto'>
     <busy :is-busy="isBusy">
       <span slot='normal'>
         {{ normalMsg }} - isBusy = {{ isBusy }}

@@ -11,7 +11,7 @@ import List from '../../src/components/List'
 
 function fill () {
   let result = []
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 10000; i++) {
     result.push({ name: '测试', age: 10 })
   }
   return result

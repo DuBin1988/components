@@ -1,9 +1,9 @@
 <template>
-  <div id='app'>
+  <div id='app' class='auto'>
     <http-busy>
       <div>
         <div>
-          <button @click="post('rs/dd')">发送错误请求</button>
+          <button @click="post('rs/entity/t_project', {name: 'abc'})">发送错误请求</button>
           <button @click="post('rs/dd', {rejectMsg: null})">无错误提醒发送</button>
           <button @click="post('rs/sql/project.sql/n')">发送正确请求</button>
         </div>

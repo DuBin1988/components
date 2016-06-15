@@ -8,9 +8,9 @@
         </tr>
       </template>
       <template partial='body'>
-        <td >{{row.age}}</td>
+        <td >{{row.data.age}}</td>
       </template>
-      <span partial>{{row.name}}</span>
+      <span partial>{{row.data.name}}</span>
     </grid-tree>
   </div>
 </template>

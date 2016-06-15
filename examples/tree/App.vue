@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class='auto'>
     <tree :model="model">
-      <span partial>{{row.name}}</span>
+      <span partial>{{row.data.name}}</span>
     </tree>
   </div>
 </template>

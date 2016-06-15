@@ -4,7 +4,7 @@
 
 ## 第三方插件
 
-* vue-strap：由于需要对vue-strap进行修改，在项目根目录下，引入了vue-strap内容，方便修改，修改后的vue-strap文件，不用发布，直接复制到OA等工程目录下。
+* vue-strap：由于需要对vue-strap进行修改，在src目录下，导入了vue-stap源码，与vue-client源码同等处理。
 * bootstrap：bootstrap源码，测试例子需要这些源码。OA等工程包含这些源码，不用复制。
 
 ## 目录结构
@@ -25,7 +25,7 @@
   - SelectStore
   - TreeList
   - all
-* client.less：自己扩充的基础样式，将复制到OA等项目中，all里已经引入。
+* client.less：自己扩充的基础样式，all里已经引入。
 
 ## 组件
 
@@ -40,12 +40,15 @@
 * [GridTree](docs/GridTree.md)：表格树组件。
 * [Pager](docs/Pager.md)：翻页组件。
 * [CriteriaPaged](docs/CriteriaPaged.md)：复合组件，带查询条件的翻页显示数据组件。
+* [Route](docs/Route.md)：路由组件，类似于浏览器里的一个页签。
+* [Dynamic](doc/Dynamic.md)：动态页签组件。
 
 ## 插件
 
 * [MessageBox](docs/MessageBox.md)：提供提醒对话框显示功能。
 * [HttpStore](docs/MessageBox.md)：提供后台http请求功能。
 * [Partial](docs/MessageBox.md)：提供片段支持。
+* [Route](docs/Route.md)：提供路由功能。
 
 ## 混合
 

@@ -1,5 +1,5 @@
 <template>
-  <div id='app'>
+  <div id='app' class='auto'>
     <criteria v-ref:search @condition-changed='showCondition'>
       <span partial>
         <div>

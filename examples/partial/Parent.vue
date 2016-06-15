@@ -1,16 +1,16 @@
 <template>
   <div id='app' class='auto'>
     <test-table>
-      <div partial='head'>
-      <span a-tr>
-        <span a-td>
-          a
-        </span>
-        <span a-td>
-          b
-        </span>
-      </span>
-      </div>
+      <template partial='head'>
+        <tr>
+          <td>
+            a
+          </td>
+          <td>
+            b
+          </td>
+        </tr>
+      </template>
     </test-table>
   </div>
 </template>

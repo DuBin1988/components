@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class='auto'>
     <message-box>
     </message-box>
     <div>

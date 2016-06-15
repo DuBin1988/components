@@ -12,9 +12,11 @@ export default class TreeList {
         size: row.size, // 子的个数
         id: row.id      // id号
       }
-      // 如果还没有子节点，设置成空
-      if (!newRow.children) {
+      // 如果数据没有子节点，设置成空。否则，把数据的子节点取过来
+      if (!row.children) {
         newRow.children = []
+      } else {
+        newRow.children = row.children
       }
       // 如果子节点展开状态未知，默认设置为false
       if (newRow.open === undefined) {

@@ -4,7 +4,6 @@ import VueResource from 'vue-resource'
 import Partial from './plugins/Partial'
 import MessageBoxPlugin from './plugins/MessageBox'
 import HttpStore from '../src/plugins/HttpStore'
-import State from '../src/plugins/State'
 import RoutePlugin from '../src/plugins/Route'
 
 import VueValidator from 'vue-validator'
@@ -35,7 +34,6 @@ export default function () {
   Vue.config.debug = true
   Vue.use(VueResource)
   Vue.mixin(Partial)
-  Vue.mixin(State)
   Vue.mixin(RoutePlugin)
   Vue.use(MessageBoxPlugin)
   Vue.use(HttpStore)

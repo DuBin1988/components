@@ -2,6 +2,11 @@
 所有关于本产品的变化都在该文档里。
 
 ## [Unreleased]
+### Removed
+- State插件移除。
+
+### Fixed
+- 解决了TreeMixin在提前给定数据时，不能操作的bug。
 
 ## V1.1.1 - 2016-05-28 @何宁社
 ### Fixed
