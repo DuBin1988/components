@@ -18,12 +18,14 @@ export default {
 
       // 计算默认值
       let defaultValue = el.getAttribute('default-value')
-      try {
-        /*eslint-disable */
-        this.model[name] = eval(defaultValue)
-        /*eslint-enable */
-      } catch (e) {
-        console.warn(`Evaluation error, default: ${defaultValue}, error: ${e}`)
+      if (defaultValue) {
+        try {
+          /*eslint-disable */
+          this.$set(`model.${name}`, eval(defaultValue))
+          /*eslint-enable */
+        } catch (e) {
+          console.warn(`Evaluation error, default: ${defaultValue}, error: ${e}`)
+        }
       }
     }
   },
@@ -31,7 +33,7 @@ export default {
   data () {
     return {
       // 保存用户输入的数据
-      model: {},
+      model: {userName: 'ddd'},
       // 配置的条件内容
       conditions: {},
       // 最终产生的查询条件

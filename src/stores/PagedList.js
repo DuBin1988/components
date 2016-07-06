@@ -42,7 +42,7 @@ export default class PagedList {
     this.procParams()
 
     // 发生请求时，不进行任何提醒
-    Vue.post(`${this.url}/n`, this.params, {resolveMsg: null, rejectMsg: null}).then(
+    Vue.post(`${this.url}/n`, {data: this.params}, {resolveMsg: null, rejectMsg: null}).then(
       (response) => {
         if (response.data.n === 0) {
           this.state = '错误'
@@ -73,7 +73,7 @@ export default class PagedList {
 
     Vue.post(
       `${this.url}?pageNo=${pageNo}&pageSize=${this.pageSize}`,
-       this.params,
+       {data: this.params},
       {resolveMsg: null, rejectMsg: null}
     ).then(
       (response) => {

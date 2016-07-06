@@ -5,7 +5,7 @@
         <div>
         用户名:
         <input type="text" v-model="model.userName" v-on:keyup.enter="search"
-        condition="username like '%{}%'" default-value="'13'">
+        condition="username like '%{}%'" default-value="'13'">{{model.userName}}
         </div>
         <div>
         地址:
